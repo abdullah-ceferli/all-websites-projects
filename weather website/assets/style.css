@@ -1,0 +1,188 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: black;
+    font-family: sans-serif;
+}
+:root{
+    --primary-color: oklch(.551 .027 264.364);
+    --bg-color: oklch(.985 .002 247.839);
+    --input-background: #f3f3f5;
+    --second-color: oklch(.708 0 0);
+    --border-color: oklch(90.365% 0.0001 271.152);
+}
+.lucide-cloud-rain path{
+    color: rgb(0, 162, 255);
+}
+.lucide-cloud path{
+    color: var(--primary-color);
+}
+.lucide-sun path,.lucide-sun circle{
+    color: oklch(.795 .184 86.047);
+}
+.main{
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 55px;
+    gap: 20px;
+}
+.weather-input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    width: 100%;
+}
+.weather-input div{
+    display: flex;
+}
+.weather-input p:first-child{
+    margin-bottom: 25px;
+}
+.weather-input-full input{
+    background-color: var(--input-background);
+    width: 400px;
+    height: 31.5px;
+    padding: 3.5px 10.500px 3.5px 35px;
+    border-radius: 10px;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+.weather-input-full input:focus{
+    border: 1px solid var(--second-color); 
+    box-shadow: 0 0 20px var(--second-color); 
+    outline: none;
+}
+.fa-magnifying-glass{
+    position: relative;
+    left: 28px;
+    top: 7px;
+    color: var(--second-color);
+    cursor: pointer;
+}
+.weather-input div:last-child{
+    display: flex;
+    gap: 5px;
+}
+.weather-input div:last-child svg circle,.weather-input div:last-child svg path{
+    color: var(--second-color);
+}
+.weather-input div:last-child p{
+    color: var(--second-color);
+    font-size: 13px;
+}
+.weather-now,.day-forecast{
+    padding: 21px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    border: 0.5px solid var(--border-color);
+    border-radius: 15px;
+    background-color: #fff;
+}
+.weather-now-main div:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+}
+.weather-now-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+.weather-now-main-state{
+    background-color: var(--input-background);
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.weather-now-into hr{
+    width: 350px;
+    margin: 20px;
+    height: 1px; 
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+.weather-now-intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 348px;
+    margin-right: 110px;
+}
+.weather-now-intro div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+}
+.weather-now-intro div div:first-child{
+    width: 30px;
+}
+.weather-now-intro div div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 76px;
+}
+.weather-now-intro div div p:first-child{
+    font-size: 13px;
+    color: var(--primary-color);
+}
+.weather-now-intro div div path,.weather-now-intro div div circle,.weather-now-intro div div i{
+    color: var(--primary-color);
+}
+.day-forecast div{
+    width: 100%;
+}
+.day-forecast div div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.day-forecast hr{
+    width: 350px;
+    margin: 8px 0 8px 0;
+    height: 1px; 
+    border: none;
+    border-top: 1px solid var(--border-color);
+}
+.day-forecast div div div div{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 70px;
+}
+.day-forecast div div div div p:last-child{
+    font-size: 12px;
+    color: var(--primary-color);
+}
+.day-forecast-temp{
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+.day-forecast-temp p{
+    font-size: 14px;
+}
+.day-forecast-temp p:last-child{
+    color: var(--primary-color);
+}
+.day-forecast-title{
+    margin-right: 245px;
+}

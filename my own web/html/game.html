@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcom to my games</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../assets/img/brand img.png">
+    <link rel="stylesheet" href="../assets/css/game.css">
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-bar">
+            <div class="brand-img">
+                <a href="../html/main.html">
+                    <img src="../assets/img/brand img.png" alt="">
+                    <h1>My Own Web</h1>
+                </a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+                <div class="suggestions-box" id="suggestionsBox"></div>
+            </div>
+            <div class="camera-to-screen-shot">
+                <button id="camera-btn">Scr Sht</button>
+                <canvas id="screenshotCanvas" style="display:none;"></canvas>
+            </div>
+            <div class="sender-of-nav">
+                <i id="shareButton" class="fa-regular fa-share-from-square"></i>
+            </div>
+            <div class="sign-of-nav">
+                <a href="#">
+                    <p id="signInBtn">Sign In</p>
+                </a>
+            </div>
+            <div id="signInModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Sign In</h2>
+                    <form action="#" method="post">
+                        <input type="text" id="username" placeholder="Username" required><br>
+                        <input type="password" id="password" placeholder="Password" required><br>
+                        <a href="https://workspace.google.com/intl/ru/gmail/#inbox">
+                            <button type="submit">Sign In</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="user-icon">
+                    <i class="fa-solid fa-user profile-btn" id="profileBtn"></i>
+                </div>
+                <div class="profile-menu" id="profileMenu">
+                    <div class="profile-info">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Hi user</p>
+                        <p>user@gmail.com</p>
+                    </div>
+                    <hr>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Sign Out</a>
+                </div>
+            </div>
+        </nav>
+        <main class="main">
+            <div id="sidebar">
+                <a href="#" id="section1-btn">Snake game</a>
+                <a href="#" id="section2-btn">Clicker game</a>
+                <a href="#" id="section3-btn">Will soon</a>
+            </div>
+            <div id="main-content">
+                <div id="section1" class="content-section">
+                    <h2>Snake game</h2>
+                    <p>This game maked from Chatgpt and some from deep seek <br> that is snake game code if want play go right</p>
+                    <div class="code-for-list">
+                        <span class="html-code">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang="en"&gt;<br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                            &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                            &nbsp;&nbsp;&lt;title&gt;Snake Game&lt;/title&gt;<br>
+                            &nbsp;&nbsp;&lt;style&gt;<br>
+                        </span>
+                        <span class="css-code">
+                            &nbsp;&nbsp;&nbsp;&nbsp;body {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;flex-direction: column;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height: 100vh;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: white;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: black;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-family: Arial, sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;canvas {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;background-color: black;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;#scoreBoard {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 20px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-bottom: 10px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;#instructions {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 16px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-top: 20px;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        </span>
+                        <span class="html-code">
+                            &lt;/style&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&lt;div id="scoreBoard"&gt;Score: &lt;span id="score"&gt;0&lt;/span&gt; | Record: &lt;span id="record"&gt;0&lt;/span&gt;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;canvas id="gameCanvas" width="400" height="400"&gt;&lt;/canvas&gt;<br>
+                            &nbsp;&nbsp;&lt;div id="instructions"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&lt;strong&gt;Instructions:&lt;/strong&gt;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;span style="color: red;"&gt;Red food&lt;/span&gt;: Adds 1 point to your score.&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;span style="color: yellow;"&gt;Yellow food&lt;/span&gt;: Adds 10 points to your score.&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;span style="color: blue;"&gt;Blue food&lt;/span&gt;: Doubles your score!&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Use A W S D for movement&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;script&gt;<br>
+                        </span>
+                        <span class="js-code">
+                            const canvas = document.getElementById("gameCanvas");<br>
+                            const ctx = canvas.getContext("2d");<br>
+                            const scoreDisplay = document.getElementById("score");<br>
+                            const recordDisplay = document.getElementById("record");<br>
+                            let snake = [{ x: 200, y: 200 }];<br>
+                            let direction = "RIGHT";<br>
+                            let foods = [spawnFood(), spawnFood()];<br>
+                            let gameInterval;<br>
+                            let score = 0;<br>
+                            let speed = 150;<br>
+                            let record = localStorage.getItem("snakeRecord") || 0;<br>
+                            recordDisplay.textContent = record;<br>
+                            function spawnFood() {<br>
+                                let chance = Math.random();<br>
+                                if (chance &lt; 0.1) return { x: randomPosition(), y: randomPosition(), type: "yellow" }; // 10% chance for yellow<br>
+                                if (chance &lt; 0.15) return { x: randomPosition(), y: randomPosition(), type: "blue" }; // 5% chance for blue<br>
+                                return { x: randomPosition(), y: randomPosition(), type: "red" }; // 85% chance for red<br>
+                            }<br>
+                            function randomPosition() {<br>
+                                return Math.floor(Math.random() * 20) * 20;<br>
+                            }<br>
+                            function drawSnake() {<br>
+                                ctx.fillStyle = "lime";<br>
+                                snake.forEach(segment =&gt; {<br>
+                                    ctx.fillRect(segment.x, segment.y, 20, 20);<br>
+                                });<br>
+                            }<br>
+                            function drawFood() {<br>
+                                foods.forEach(food =&gt; {<br>
+                                    ctx.fillStyle = food.type;<br>
+                                    ctx.fillRect(food.x, food.y, 20, 20);<br>
+                                });<br>
+                            }<br>
+                        </span>
+                        <span class="js-code">
+                            function moveSnake() {<br>
+                                let head = { ...snake[0] };<br>
+                                if (direction === "UP") head.y -= 20;<br>
+                                if (direction === "DOWN") head.y += 20;<br>
+                                if (direction === "LEFT") head.x -= 20;<br>
+                                if (direction === "RIGHT") head.x += 20;<br>
+                                snake.unshift(head);<br>
+                                for (let i = 0; i &lt; foods.length; i++) {<br>
+                                    if (head.x === foods[i].x && head.y === foods[i].y) {<br>
+                                        if (foods[i].type === "yellow") {<br>
+                                            score += 10;<br>
+                                        } else if (foods[i].type === "blue") {<br>
+                                            score *= 2;<br>
+                                        } else {<br>
+                                            score++;<br>
+                                        }<br>
+                                        scoreDisplay.textContent = score;<br>
+                                        if (score &gt; record) {<br>
+                                            record = score;<br>
+                                            localStorage.setItem("snakeRecord", record);<br>
+                                            recordDisplay.textContent = record;<br>
+                                        }<br>
+                                        snake.push({ x: head.x, y: head.y });<br>
+                                        foods[i] = spawnFood();<br>
+                                    }<br>
+                                }<br>
+                                if (!foods.some(food =&gt; food.x === head.x && food.y === head.y)) {<br>
+                                    snake.pop();<br>
+                                }<br>
+                            }<br>
+                            function checkCollision() {<br>
+                                let head = snake[0];<br>
+                                if (head.x &lt; 0 || head.x &gt;= canvas.width || head.y &lt; 0 || head.y &gt;= canvas.height) {<br>
+                                    clearInterval(gameInterval);<br>
+                                    alert("Game Over! Score: " + score);<br>
+                                    location.reload();<br>
+                                }<br>
+                                for (let i = 1; i &lt; snake.length; i++) {<br>
+                                    if (head.x === snake[i].x && head.y === snake[i].y) {<br>
+                                        clearInterval(gameInterval);<br>
+                                        alert("Game Over! Score: " + score);<br>
+                                        location.reload();<br>
+                                    }<br>
+                                }<br>
+                            }<br>
+                            function updateGame() {<br>
+                                ctx.clearRect(0, 0, canvas.width, canvas.height);<br>
+                                drawFood();<br>
+                                moveSnake();<br>
+                                drawSnake();<br>
+                                checkCollision();<br>
+                            }<br>
+                            window.addEventListener("keydown", (e) =&gt; {<br>
+                                if ((e.key === "ArrowUp" || e.key === "w") && direction !== "DOWN") direction = "UP";<br>
+                                if ((e.key === "ArrowDown" || e.key === "s") && direction !== "UP") direction = "DOWN";<br>
+                                if ((e.key === "ArrowLeft" || e.key === "a") && direction !== "RIGHT") direction = "LEFT";<br>
+                                if ((e.key === "ArrowRight" || e.key === "d") && direction !== "LEFT") direction = "RIGHT";<br>
+                            });<br>
+                            gameInterval = setInterval(updateGame, speed);<br>
+                        </span>
+                        <span class="html-code">
+                            &lt;/script&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </span>
+                    </div>
+                    <div class="links">
+                        <a href="./snake game.html"><h1>link of snake game</h1></a>
+                    </div>
+                </div>
+                <div id="section2" class="content-section">
+                    <h2>clicker game</h2>
+                    <p>This game maked from Chatgpt and some from deep seek <br> that is cilker game code if want play go right</p>
+                    <div style="max-width: 725.172px; width: 100%;" class="code-for-list">
+                        <div class="html-code">
+                            &lt;!DOCTYPE html&gt;<br>
+                            &lt;html lang="en"&gt;<br>
+                            &lt;head&gt;<br>
+                            &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+                            &nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                            &nbsp;&nbsp;&lt;title&gt;Click the Button Game&lt;/title&gt;<br>
+                            &nbsp;&nbsp;&lt;link rel="stylesheet" href="styles.css"&gt;<br>
+                            &nbsp;&nbsp;&lt;style&gt;
+                        </div>
+                        <div class="css-code">
+                            &nbsp;&nbsp;&nbsp;&nbsp;body { font-family: Arial, sans-serif; background-color: #f0f0f0; }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;.game-container { text-align: center; background-color: #fff; }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;#clickButton { background-color: #007bff; color: white; }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;#startButton { background-color: #28a745; color: white; }<br>
+                        </div>
+                        <div class="html-code">
+                            &nbsp;&nbsp;&lt;/style&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br>
+                            &nbsp;&nbsp;&lt;div class="game-container"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Click the Button!&lt;/h1&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Click the button as many times as you can in 10 seconds!&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;button id="clickButton"&gt;Click Me!&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Time Remaining: &lt;span id="timeRemaining"&gt;10&lt;/span&gt; seconds&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Your Score: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;button id="startButton"&gt;Start Game&lt;/button&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;script&gt;
+                        </div>
+                        <div class="js-code">
+                            &nbsp;&nbsp;&nbsp;&nbsp;let score = 0;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;let timeRemaining = 10;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;let gameActive = false;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;const clickButton = document.getElementById('clickButton');<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;const timeRemainingDisplay = document.getElementById('timeRemaining');<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;const scoreDisplay = document.getElementById('score');<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;const startButton = document.getElementById('startButton');<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;function startGame() {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;score = 0; timeRemaining = 10; gameActive = true;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scoreDisplay.textContent = score;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeRemainingDisplay.textContent = timeRemaining;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clickButton.disabled = false;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;clickButton.addEventListener('click', () => {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (gameActive) { score++; scoreDisplay.textContent = score; }<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;});<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;startButton.addEventListener('click', startGame);
+                        </div>
+                        <div class="html-code">
+                            &nbsp;&nbsp;&lt;/script&gt;<br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    </div>
+                    <div class="links">
+                        <a href="./cliker game.html"><h1>link of cliker game</h1></a>
+                    </div>
+                </div>
+                <div id="section3" class="content-section">
+                    <h2>Section 3</h2>
+                    <p>This is the content of section 3.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../assets/script/game.js"></script>
+</body>
+</html>

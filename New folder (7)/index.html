@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Поиск по списку</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    input {
+      padding: 8px;
+      width: 200px;
+      margin-bottom: 10px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 5px;
+      border: 1px solid #ddd;
+      margin: 2px 0;
+      border-radius: 4px;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h3>Поиск по списку</h3>
+  <input type="text" id="searchInput" placeholder="Введите текст...">
+  <ul id="dataList"></ul>
+
+  <script>
+    const data = ["Apple", "Banana", "Orange", "Mango", "Pineapple", "Grapes"]
+
+    const searchInput = document.getElementById("searchInput")
+    const dataList = document.getElementById("dataList")
+
+    function renderList(items) {
+      dataList.innerHTML = ""
+      items.forEach(item => {
+        const li = document.createElement("li")
+        li.textContent = item
+        dataList.appendChild(li)
+      })
+    }
+    renderList(data)
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase()
+      const filtered = data.filter(item => item.toLowerCase().includes(value))
+      renderList(filtered)
+    })
+  </script>
+</body>
+</html>

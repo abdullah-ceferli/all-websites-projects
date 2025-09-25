@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #121212;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            background-color: black;
+        }
+        #scoreBoard {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        #instructions {
+            font-size: 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .to-back-home button{
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            background-color: rgb(134, 54, 39);
+            color: white;
+        }
+        .to-back-home{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="to-back-home">
+        <a href="./game.html">
+            <button>Click to go back</button>
+        </a>
+    </div>
+    <div id="scoreBoard">Score: <span id="score">0</span> | Record: <span id="record">0</span></div>
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    <div id="instructions">
+        <p><strong>Instructions:</strong></p>
+        <ul>
+            <li><span style="color: red;">Red food</span>: Adds 1 point to your score.</li>
+            <li><span style="color: yellow;">Yellow food his (change is 10%)</span>: Adds 10 points to your score.</li>
+            <li><span style="color: blue;">Blue food his (change is 5%)</span>: Doubles your current score!</li>
+        </ul>
+        <p>Use A W S D for move</p>
+    </div>
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreDisplay = document.getElementById("score");
+        const recordDisplay = document.getElementById("record");
+        
+        let snake = [{ x: 200, y: 200 }];
+        let direction = "RIGHT";
+        let foods = [spawnFood(), spawnFood()];
+        let gameInterval;
+        let score = 0;
+        let speed = 150;
+        let record = localStorage.getItem("snakeRecord") || 0;
+        recordDisplay.textContent = record;
+        
+        function spawnFood() {
+            let chance = Math.random();
+            if (chance < 0.1) return { x: randomPosition(), y: randomPosition(), type: "yellow" }; // 10% chance for yellow
+            if (chance < 0.15) return { x: randomPosition(), y: randomPosition(), type: "blue" }; // 5% chance for blue
+            return { x: randomPosition(), y: randomPosition(), type: "red" }; // 85% chance for red
+        }
+        
+        function randomPosition() {
+            return Math.floor(Math.random() * 20) * 20;
+        }
+        
+        function drawSnake() {
+            ctx.fillStyle = "lime";
+            snake.forEach(segment => {
+                ctx.fillRect(segment.x, segment.y, 20, 20);
+            });
+        }
+        
+        function drawFood() {
+            foods.forEach(food => {
+                ctx.fillStyle = food.type;
+                ctx.fillRect(food.x, food.y, 20, 20);
+            });
+        }
+        
+        function moveSnake() {
+            let head = { ...snake[0] };
+            if (direction === "UP") head.y -= 20;
+            if (direction === "DOWN") head.y += 20;
+            if (direction === "LEFT") head.x -= 20;
+            if (direction === "RIGHT") head.x += 20;
+            
+            snake.unshift(head);
+            
+            for (let i = 0; i < foods.length; i++) {
+                if (head.x === foods[i].x && head.y === foods[i].y) {
+                    if (foods[i].type === "yellow") {
+                        score += 10; // Yellow food gives 10 points
+                    } else if (foods[i].type === "blue") {
+                        score *= 2; // Blue food doubles the current score
+                    } else {
+                        score++; // Red food gives 1 point
+                    }
+                    scoreDisplay.textContent = score;
+                    if (score > record) {
+                        record = score;
+                        localStorage.setItem("snakeRecord", record);
+                        recordDisplay.textContent = record;
+                    }
+                    snake.push({ x: head.x, y: head.y }); // Snake grows by adding a new segment
+                    foods[i] = spawnFood(); // Respawn the food
+                }
+            }
+            
+            if (!foods.some(food => food.x === head.x && food.y === head.y)) {
+                snake.pop();
+            }
+        }
+        
+        function checkCollision() {
+            let head = snake[0];
+            if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
+                clearInterval(gameInterval);
+                alert("Game Over! Score: " + score);
+                location.reload();
+            }
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    clearInterval(gameInterval);
+                    alert("Game Over! Score: " + score);
+                    location.reload();
+                }
+            }
+        }
+        
+        function updateGame() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawFood();
+            moveSnake();
+            drawSnake();
+            checkCollision();
+        }
+        
+        window.addEventListener("keydown", (e) => {
+            if ((e.key === "ArrowUp" || e.key === "w") && direction !== "DOWN") direction = "UP";
+            if ((e.key === "ArrowDown" || e.key === "s") && direction !== "UP") direction = "DOWN";
+            if ((e.key === "ArrowLeft" || e.key === "a") && direction !== "RIGHT") direction = "LEFT";
+            if ((e.key === "ArrowRight" || e.key === "d") && direction !== "LEFT") direction = "RIGHT";
+        });
+        
+        gameInterval = setInterval(updateGame, speed);
+    </script>
+</body>
+</html>

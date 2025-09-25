@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcom to my web</title>
+    <link rel="icon" type="image/png" href="../assets/img/brand img.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="nav-bar">
+            <div id="signInModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Sign In</h2>
+                    <form action="#" method="post">
+                        <input type="text" id="username" placeholder="Username" required><br>
+                        <input type="password" id="password" placeholder="Password" required><br>
+                        <a href="https://workspace.google.com/intl/ru/gmail/#inbox">
+                            <button type="submit">Sign In</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+            <div class="sign-in">
+                <a href="#">
+                    <p id="signInBtn">Sign In</p>
+                </a>
+                <a href="#">Email</a>
+            </div>
+            <div class="menu-of-dots">
+                <div class="dots" id="menuBtn">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="menu" id="menu">
+                    <a href="#">not working for now</a>
+                    <a href="#">not working for now</a>
+                    <a href="#">not working for now</a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="user-icon">
+                    <i class="fa-solid fa-user profile-btn" id="profileBtn"></i>
+                </div>
+                <div class="profile-menu" id="profileMenu">
+                    <div class="profile-info">
+                        <i class="fa-solid fa-user"></i>
+                        <p>Hi user</p>
+                        <p>user@gmail.com</p>
+                    </div>
+                    <hr>
+                    <a href="#">My Account</a>
+                    <a href="#">Settings</a>
+                    <a href="#">Sign Out</a>
+                </div>
+            </div>
+        </nav>
+        <main class="main">
+            <div class="brand-name">
+                <h1 class="first-h1-of-brand-name">My</h1>
+                <h1 class="second-h1-of-brand-name">Own</h1>
+                <h1 class="three-h1-of-brand-name">Web</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+                <div class="suggestions-box" id="suggestionsBox"></div>
+            </div>
+            <div class="container-circuls" id="circleContainer">
+                <div class="add-btn" id="addCircle">+</div>
+            </div>
+            <div class="input-container" id="inputContainer">
+                <input type="text" id="linkInput" placeholder="Add Link">
+                <input type="text" id="nameInput" placeholder="Add Name">
+                <div>
+                    <button id="cancelButton" class="cancel-btn">Cancel</button>
+                    <button id="submitButton" class="submit-btn" disabled>Add</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/script/main.js"></script>
+</body>
+</html>

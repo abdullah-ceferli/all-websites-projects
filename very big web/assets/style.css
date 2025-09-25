@@ -1,0 +1,278 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+:root{
+    --primary-color:#FD6F00;
+}
+.contain{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+}
+.wraper{
+    padding-top: 15px;
+    font-family: sans-serif;
+}
+.header{
+    padding-right: 50px;
+} 
+.links a{
+    color: black;
+    text-decoration: none;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding-right: 50px;
+}
+.navbar button{
+    width: 108px;
+    height: 30px;
+    background-color: var(--primary-color) ;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: white;
+}
+.brand-name img{
+    height: 90px;
+    max-width: 258px;
+    margin-right: 190px;
+}
+.links{
+    margin-top: 10px;
+}
+.main{
+    font-family: sans-serif;
+}
+.icon img{
+    height: 16px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+.left button{
+    background-color: var(--primary-color);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width: 108px;
+    height: 30px;
+    margin-top: 15px;
+}
+.img{
+    height: 500px;
+}
+.left{
+    max-width: 550px;
+}
+.h1{
+    margin-left: 50px;
+}
+.left h1{
+    font-size: 60px;
+}
+.p{
+    color: var(--primary-color);
+    margin-top: 7px;
+}
+.left p{
+    font-size: 20px;
+}
+.hero{
+    display: flex;
+    justify-content: space-around;
+    gap: 200px;
+    margin-top: 50px;
+}
+.icon{
+    padding-left: 150px;
+    display: flex;
+    margin-top: 10px;
+}
+.icon i{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.rightfirst{
+    margin-left: 30px;
+}
+.rightfirst h1{
+    font-size: 40px;
+}
+.input img{
+    max-width: 600px;
+}
+.atrighttop{
+    max-width: 470px;
+    margin-top: 100px;
+}
+.atrighttop p{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.aboutme{
+    display: flex;
+    margin-left: 20px;
+}
+.servers-item{
+    background-color: #f5eded;
+    height: 346px;
+    max-width: 250px;
+    max-height: 200px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 30px;
+}
+.servers-item h3{
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.servers-item img{
+    height: 70px;
+}
+.services{
+    margin: 70px;
+}
+.servers-wraper{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.alltop{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.topfirst h1{
+    font-size: 40px;
+}
+.forcolor{
+    background-color: var(--primary-color);
+    color: white;
+}
+.bottom button{
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+}
+.bottom{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+.color{
+    color: var(--primary-color);
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.imglist img{
+    max-width: 400px;
+}
+.myprojects{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.testimonials{
+    margin-top: 50px;
+}
+.fivecenter{
+    max-width: 430px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+.atfivecenter img{
+    height: 150px;
+}
+.atfivecenter{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    position: relative;
+}
+.fivecenter h5{
+    margin-top: 10px;
+}
+.fiveright{
+    display: flex;
+    justify-content: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.lastimg{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 120px;
+}
+.formargin{
+    margin-bottom: 20px;
+}
+.search button{
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    height: 30px;
+    width: 90px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.search input{
+    padding: 6px;
+    padding-right: 90px;
+    border-radius: 6px;
+}
+.search{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+.lastlink img{
+    height: 90px;
+    max-width: 258px;
+}
+.lastlink a{
+    text-decoration: none;
+    color: black;
+}
+.iconsecond img{
+    height: 15px;
+}
+.imgsecond{
+    display: flex;
+    justify-content: center;
+}
+.a{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.iconsecond{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 20px;
+}
+.footer{
+    background-color: rgb(32.9%,32.9%,32.9%);
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
+    margin-top: 30px;
+}
+.lastcolor{
+    color: var(--primary-color);
+}
+.white{
+    color: white;
+}

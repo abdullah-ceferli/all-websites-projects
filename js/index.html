@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Save & Fake Send</title>
+  <style>
+    #message {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .success {
+      color: green;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+adwa
+  <script>
+    document.addEventListener("keydown", function (e) {
+    // F5 key
+    if (e.key === "F5") {
+      e.preventDefault();
+      alert("Page refresh is disabled.");
+    }
+    
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "r") {
+      e.preventDefault();
+      alert("Page refresh is disabled.");
+    }
+  });
+  </script>
+</body>
+</html>

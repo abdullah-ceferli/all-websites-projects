@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click the Button Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#clickButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#clickButton:active {
+    background-color: #0056b3;
+}
+
+#startButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+#startButton:hover {
+    background-color: #218838;
+}
+
+p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.to-back-home button{
+    padding: 10px;
+    border: none;
+    border-radius: 50px;
+    background-color: #007bff;
+    color: white;
+}
+.to-back-home{
+    margin-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="to-back-home">
+            <a href="./game.html">
+                <button>Click to go back</button>
+            </a>
+        </div>
+        <h1>Click the Button!</h1>
+        <p>Click the button as many times as you can in 10 seconds!</p>
+        <button id="clickButton">Click Me!</button>
+        <p>Time Remaining: <span id="timeRemaining">10</span> seconds</p>
+        <p>Your Score: <span id="score">0</span></p>
+        <button id="startButton">Start Game</button> <!-- New Start Game button -->
+    </div>
+    <script>
+let score = 0;
+let timeRemaining = 10;
+let timer;
+let gameActive = false;
+
+const clickButton = document.getElementById('clickButton');
+const timeRemainingDisplay = document.getElementById('timeRemaining');
+const scoreDisplay = document.getElementById('score');
+const startButton = document.getElementById('startButton');
+
+// Function to start or restart the game
+function startGame() {
+    score = 0;
+    timeRemaining = 10;
+    gameActive = true;
+    scoreDisplay.textContent = score;
+    timeRemainingDisplay.textContent = timeRemaining;
+    clickButton.disabled = false; // Enable the click button
+    startButton.style.display = 'none'; // Hide the Start Game button
+
+    clearInterval(timer);
+    timer = setInterval(() => {
+        timeRemaining--;
+        timeRemainingDisplay.textContent = timeRemaining;
+
+        if (timeRemaining <= 0) {
+            clearInterval(timer);
+            gameActive = false;
+            clickButton.disabled = true; // Disable the click button
+            startButton.style.display = 'block'; // Show the Start Game button
+            alert(`Time's up! Your score is ${score}`);
+        }
+    }, 1000);
+}
+
+// Click event for the main button
+clickButton.addEventListener('click', () => {
+    if (gameActive) {
+        score++;
+        scoreDisplay.textContent = score;
+    }
+});
+
+// Click event for the Start Game button
+startButton.addEventListener('click', () => {
+    startGame();
+});
+
+// Initialize the game
+startGame();
+    </script>
+</body>
+</html>

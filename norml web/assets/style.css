@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+:root{
+    --button-color-:#135CE7;
+    --voic-color-:#FDA122;
+}
+.wrapper{
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+.top-section-of-wrapper{
+    margin-left: 127px;
+    margin-top: 74px;
+    display: flex;
+    max-width: 908px;
+    gap: 231px;
+}
+.left-section-of-top-of-wrapper h3{
+    font-size: 28px;
+}
+.center-section-of-top-of-wrapper{
+    display: flex;
+    gap: 36px;
+}
+.right-section-of-top-of-wrapper a{
+    text-decoration: none;
+    color: black;
+    margin-top: 5px;
+}
+.right-section-of-top-of-wrapper{
+    display: flex;
+    gap: 36px;
+}
+.right-section-of-wrapper{
+    background-image: url('./img/3d-rendering-cartoon-character-beach\ 1.png');
+    height: 770px;
+    width: 600px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.right-section-of-wrapper a{
+    text-decoration: none;
+    color: white;
+}
+.right-section-of-wrapper button{
+    background-color: white;
+    border: none;
+    border-radius: 100px;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+.right-section-of-wrapper div{
+    float: right;
+    display: flex;
+    gap: 46px;
+    margin-right: 50px;
+    margin-top: 53px;
+}
+.audio-section-of-center-section-of-wrapper a{
+    text-decoration: none;
+    color: black;
+}
+.audio-section-of-center-section-of-wrapper i{
+    color: var(--voic-color-);
+}
+.audio-section-of-center-section-of-wrapper{
+    display: flex;
+}
+.audio-section-of-center-section-of-wrapper button{
+    width: 190px;
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+    border-radius: 100px;
+    border-color: white;
+}
+.write-section-of-center-section-of-wrapper p:first-child{
+    font-size: 74px;
+}
+.write-section-of-center-section-of-wrapper{
+    max-width: 473px;
+}
+.button-section-of-center-section-of-wrapper a{
+    text-decoration: none;
+    color: black;
+}
+.button-section-of-center-section-of-wrapper button{
+    background-color: var(--button-color-);
+    border: none;
+    border-radius: 100px;
+    color: white;
+    width: 110px;
+    height: 40px;
+}
+.center-section-of-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 42px;
+    margin-top: 100px;
+    margin-left: 120px;
+}
+.left-section-of-wrapper footer button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+}
+.left-section-of-wrapper footer{
+    margin-left: 120px;
+    margin-top: 40px;
+}

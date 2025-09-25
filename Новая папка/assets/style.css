@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    display: flex;
+    background-color: #002f46;
+    justify-content: center;
+    align-items: center;
+}
+#main{
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   align-items: center;
+}
+#main h1{
+    color: #48ce95;
+}
+.dice-part{
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+}
+#player1Txt{
+    margin-bottom: 20px;
+    color: #48ce95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#player2Txt{
+    margin-bottom: 20px;
+    color: #48ce95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttons{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.buttons button{
+    color: white;
+    background-color: #48ce95;
+    border: 0.5px solid white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    width: 160px;
+    height: 60px;
+}
+.buttons button:hover{
+    background-color: #1f2832;
+}
+#player1Dice,#player2Dice{
+    width: 100px;
+    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    background-color: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+}
+#dots1Ply,#dots2Ply{
+    width: 100px;
+    height: 100px;
+    display: grid;
+    position: relative;
+    right: 12px;
+    bottom: 10px;
+}
+
+#dots1Ply div,#dots2Ply div{
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    border-radius: 50%;
+    justify-self: center;
+    align-self: center;
+}
+#dot1Ply1,#dot1Ply2{
+    grid-row: 1;
+    grid-column: 1;
+}
+#dot2Ply1,#dot2Ply2{
+    grid-row: 1; 
+    grid-column: 3; 
+}
+#dot3Ply1,#dot3Ply2{
+    grid-row: 2;
+    grid-column: 1; 
+}
+#dot4Ply1,#dot4Ply2{
+    grid-row: 2; 
+    grid-column: 3; 
+}
+#dot5Ply1,#dot5Ply2{ 
+    grid-row: 3; 
+    grid-column: 1; 
+}
+#dot6Ply1,#dot6Ply2{ 
+    grid-row: 3; 
+    grid-column: 3; 
+}

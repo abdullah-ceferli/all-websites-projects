@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live HTML Code Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 48%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            font-family: monospace;
+            font-size: 16px;
+        }
+
+        iframe {
+            width: 48%;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Live HTML Code Editor</h1>
+    <p>Enter HTML code below and click "Preview" to see the live result.</p>
+
+    <div class="container">
+        <!-- Textarea for HTML input -->
+        <textarea id="htmlInput" placeholder="Write your HTML code here..."></textarea>
+
+        <!-- Live Preview (Iframe) -->
+        <iframe id="preview" src="about:blank"></iframe>
+    </div>
+
+    <!-- Button to trigger preview update -->
+    <button onclick="updatePreview()">Preview</button>
+
+    <script>
+        function updatePreview() {
+            var htmlCode = document.getElementById("htmlInput").value;
+            var iframe = document.getElementById("preview");
+
+            var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+
+            iframeDocument.open();
+            iframeDocument.write(htmlCode);
+            iframeDocument.close();
+        }
+    </script>
+
+</body>
+</html>

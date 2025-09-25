@@ -1,0 +1,111 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}    
+body{
+    background-image: url('./img/photo_2025-02-23_16-36-34.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+}
+:root{
+    --primary-color:#A276FF;
+}
+.color-primary{
+    color: var(--primary-color);
+}
+.color-white{
+    color: white;
+}
+.wrapper{
+    margin: 0 auto;
+    display: flex;
+    font-family: sans-serif;
+    background-color: #050729;
+    opacity: 0.8;
+}
+.main{
+    max-width: 1788px;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+.menu-aside{
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    margin-left: 80px;
+}
+.menu-aside a{
+    text-decoration: none;
+}
+.footer-of-aside a{
+    text-decoration: none;
+}
+.left-aside{
+    background-color: #0B0B0D;
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    gap: 94px;
+    max-width: 400px;
+    height: 100vh;
+}
+.brand{
+    margin-left: 80px;
+}
+.footer-of-aside{
+    display: flex;
+    flex-direction: column;
+    gap: 47px;
+    margin-left: 80px;
+}
+.social-icons i{
+    color: white;
+}
+.social-icons{
+    max-width: 90px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    margin-left: 900px;
+}
+.hero-section{
+    margin-top: 100px;
+}
+.img-section-of-hero img{
+    height: 130px;
+}
+.footer-of-hero div:first-child{
+    display: flex;
+}
+.footer-of-hero div:first-child img{
+    height: 20px;
+    margin-top: 5px;
+}
+.write-section-of-hero{
+    max-width: 900px;
+}
+.write-section-of-hero button{
+    background: none;
+    padding: 10px;
+    border-radius: 8px;
+    border-color: white;
+    color: white;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.write-section-of-hero h1{
+    font-size: 50px;
+}
+.img-section-of-hero{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 80px;
+}
+.write-section-of-hero p{
+    max-width: 700px;
+}
