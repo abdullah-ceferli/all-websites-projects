@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Terraria: The Full Experience</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="mainMenu" class="overlay">
+        <h1>Vanilla Sandbox Clone</h1>
+        <button id="startGameBtn">Start New Game</button>
+        <button id="continueGameBtn" disabled>Continue</button>
+        <button id="deleteSaveBtn" disabled>Delete Save</button>
+        <p class="menu-info">Loading...</p>
+    </div>
+
+    <div id="gameUI">
+        <div id="healthBarContainer">
+            Health: <span id="healthValue"></span>
+            <div id="healthBar"></div>
+        </div>
+
+        <div id="hotbar">
+            </div>
+    </div>
+
+    <div id="inventoryPanel" class="overlay" style="display: none;">
+        <h3>Inventory (Press E/I to close)</h3>
+        <div id="inventorySlots">
+            </div>
+        <p class="inventory-info">RMB to swap item types, LMB to swap whole stacks (simplified interaction).</p>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
