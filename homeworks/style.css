@@ -1,0 +1,173 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* 1
+.profile {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.profile img {
+    width: 80px;
+    border-radius: 50%;
+} */
+
+/* 2 */
+/* header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+header button {
+    padding: 6px 12px;
+} */
+
+/* 3 */
+/* .cards-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+    background: #ddd;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* 4 */
+/* .message {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.message img {
+    width: 50px;
+    border-radius: 50%;
+} */
+
+/* 5 */
+/* footer {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.footer-col {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+} */
+
+/* 6 */
+/* .order-boxes {
+    display: flex;
+    gap: 10px;
+}
+
+.order-boxes div {
+    padding: 20px;
+    background: #ccc;
+}
+
+.box1 {
+    order: 4;
+}
+
+.box2 {
+    order: 3;
+}
+
+.box3 {
+    order: 2;
+}
+
+.box4 {
+    order: 1;
+} */
+
+/* 7 */
+/* .button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-group button {
+    flex: 1;
+    padding: 10px;
+    max-width: 100px;
+} */
+
+/* 8 */
+/* .status {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    padding: 10px;
+} */
+
+/* 9 */
+/* .align-bottom {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.align-bottom div {
+    width: 60px;
+    background: #bbb;
+}
+
+.h1 {
+    height: 40px;
+}
+
+.h2 {
+    height: 80px;
+}
+
+.h3 {
+    height: 120px;
+} */
+
+/* 10 */
+/* .dashboard {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.dashboard .dash-card {
+    flex: 1;
+    max-width: 150px;
+    padding: 20px;
+    background: #ddd;
+    text-align: center;
+} */
