@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plants vs. Zombies Clone</title>
+    <style>
+        body { margin: 0; background: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        canvas { border: 1px solid #fff; }
+    </style>
+</head>
+<body>
+    <canvas id="game" width="1080" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        canvas.style.cursor = 'pointer';
+
+        // Constants
+        const CELL_SIZE = 100; // Grid cell size
+        const HOUSE_WIDTH = 180;
+        const UI_HEIGHT = 100;
+        const LAWN_X = HOUSE_WIDTH;
+        const LAWN_Y = UI_HEIGHT;
+        const LAWN_WIDTH = 9 * CELL_SIZE;
+        const LAWN_HEIGHT = 5 * CELL_SIZE;
+        const TOTAL_WIDTH = HOUSE_WIDTH + LAWN_WIDTH;
+        const TOTAL_HEIGHT = UI_HEIGHT + LAWN_HEIGHT;
+
+        const PLANTS = {
+            sunflower: { cost: 50, health: 4, cooldown: 7.5, icon: '<svg width="50" height="50" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="#FFD700"/><circle cx="25" cy="25" r="10" fill="#8B4513"/></svg>' },
+            peashooter: { cost: 100, health: 4, cooldown: 7.5, icon: '<svg width="50" height="50" viewBox="0 0 50 50"><rect x="10" y="30" width="5" height="20" fill="#228B22"/><circle cx="25" cy="25" r="15" fill="#32CD32"/><circle cx="30" cy="25" r="5" fill="#000"/></svg>' },
+            cherrybomb: { cost: 150, health: 4, cooldown: 35, icon: '<svg width="50" height="50" viewBox="0 0 50 50"><circle cx="20" cy="25" r="15" fill="#FF0000"/><circle cx="30" cy="25" r="15" fill="#FF0000"/><line x1="25" y1="25" x2="25" y2="10" stroke="#228B22" stroke-width="5"/></svg>' },
+            wallnut: { cost: 50, health: 72, cooldown: 30, icon: '<svg width="50" height="50" viewBox="0 0 50 50"><ellipse cx="25" cy="25" rx="20" ry="25" fill="#8B4513"/><line x1="10" y1="10" x2="40" y2="40" stroke="#A0522D" stroke-width="3"/><line x1="10" y1="40" x2="40" y2="10" stroke="#A0522D" stroke-width="3"/></svg>' }
+        };
+
+        const PLANT_TYPES = Object.keys(PLANTS);
+        const ZOMBIE_HEALTH = 10;
+        const ZOMBIE_SPEED = 0.5; // px per frame
+        const PEA_DAMAGE = 1;
+        const PEA_SPEED = 5;
+        const SUN_VALUE = 25;
+        const SUN_LINGER = 8000; // ms
+        const CHERRY_DELAY = 1000; // ms
+        const EXPLOSION_RADIUS = 1; // cells, for 3x3
+
+        // Game state
+        let sun = 50;
+        let selectedPlant = null;
+        let plants = [];
+        let zombies = [];
+        let projectiles = [];
+        let suns = [];
+        let particles = [];
+        let lawnmowers = [];
+        let gameOver = false;
+        let time = 0;
+        let nextSpawn = 10000; // initial 10s
+        let spawnInterval = 10000; // ms
+        let hugeWaveTimer = 60000; // ms
+        let nextHugeWave = hugeWaveTimer;
+        let waveProgress = 0;
+        let showHugeWaveText = false;
+        let hugeWaveTextTimer = 0;
+
+        // Grid for plant placement
+        let grid = Array.from({ length: 5 }, () => Array(9).fill(null));
+
+        // Icons
+        const icons = {};
+        for (let type in PLANTS) {
+            const img = new Image();
+            img.src = 'data:image/svg+xml,' + encodeURIComponent(PLANTS[type].icon);
+            icons[type] = img;
+        }
+
+        // Classes
+        class Plant {
+            constructor(type, row, col) {
+                this.type = type;
+                this.health = PLANTS[type].health;
+                this.row = row;
+                this.col = col;
+                this.x = LAWN_X + col * CELL_SIZE + CELL_SIZE / 2;
+                this.y = LAWN_Y + row * CELL_SIZE + CELL_SIZE / 2;
+                this.timer = 0;
+                this.shootTimer = 0;
+            }
+            update(dt) {
+                this.timer += dt;
+                if (this.type === 'sunflower' && this.timer >= 24000) { // produce sun every 24s
+                    suns.push(new Sun(this.x, this.y - 50, true));
+                    this.timer = 0;
+                }
+                if (this.type === 'peashooter') {
+                    this.shootTimer += dt;
+                    if (this.shootTimer >= 1500 && zombies.some(z => z.row === this.row && z.x > this.x)) { // shoot every 1.5s if zombie in lane
+                        projectiles.push(new Projectile(this.x + 20, this.y, this.row));
+                        this.shootTimer = 0;
+                    }
+                }
+                if (this.type === 'cherrybomb' && this.timer >= CHERRY_DELAY) {
+                    this.explode();
+                }
+            }
+            explode() {
+                for (let r = Math.max(0, this.row - EXPLOSION_RADIUS); r <= Math.min(4, this.row + EXPLOSION_RADIUS); r++) {
+                    for (let c = Math.max(0, this.col - EXPLOSION_RADIUS); c <= Math.min(8, this.col + EXPLOSION_RADIUS); c++) {
+                        zombies = zombies.filter(z => !(z.row === r && Math.abs(z.x - (LAWN_X + c * CELL_SIZE + CELL_SIZE / 2)) < CELL_SIZE * 1.5));
+                    }
+                }
+                for (let i = 0; i < 20; i++) {
+                    particles.push(new Particle(this.x, this.y, Math.random() * 10 - 5, Math.random() * 10 - 5, 'orange', 500));
+                }
+                grid[this.row][this.col] = null;
+                plants = plants.filter(p => p !== this);
+            }
+        }
+
+        class Zombie {
+            constructor(row) {
+                this.health = ZOMBIE_HEALTH;
+                this.row = row;
+                this.x = TOTAL_WIDTH + 50;
+                this.y = LAWN_Y + row * CELL_SIZE + CELL_SIZE / 2;
+                this.flashTimer = 0;
+                this.legAngle = 0;
+                this.eating = false;
+            }
+            update(dt) {
+                this.flashTimer = Math.max(0, this.flashTimer - dt);
+                if (!this.eating) {
+                    this.x -= ZOMBIE_SPEED;
+                    this.legAngle = Math.sin(time / 100) * 0.5;
+                }
+                // Check for plant to eat
+                const col = Math.floor((this.x - LAWN_X - 20) / CELL_SIZE);
+                if (col >= 0 && col < 9 && grid[this.row][col]) {
+                    this.eating = true;
+                    grid[this.row][col].health -= 0.02; // damage per frame ~1 per 3s at 60fps
+                    if (grid[this.row][col].health <= 0) {
+                        plants = plants.filter(p => p !== grid[this.row][col]);
+                        grid[this.row][col] = null;
+                        this.eating = false;
+                    }
+                } else {
+                    this.eating = false;
+                }
+                // Check lawnmower
+                const mower = lawnmowers.find(m => m.row === this.row);
+                if (mower && this.x < mower.x + 20) {
+                    mower.activate();
+                }
+                // Game over
+                if (this.x < HOUSE_WIDTH - 50) {
+                    gameOver = true;
+                }
+            }
+        }
+
+        class Projectile {
+            constructor(x, y, row) {
+                this.x = x;
+                this.y = y;
+                this.row = row;
+            }
+            update() {
+                this.x += PEA_SPEED;
+                // Check hit zombie
+                zombies.forEach(z => {
+                    if (z.row === this.row && Math.abs(this.x - z.x) < 20 && Math.abs(this.y - z.y) < 20) {
+                        z.health -= PEA_DAMAGE;
+                        z.flashTimer = 100;
+                        for (let i = 0; i < 5; i++) {
+                            particles.push(new Particle(z.x, z.y, Math.random() * 4 - 2, Math.random() * 4 - 2, 'red', 200));
+                        }
+                        projectiles = projectiles.filter(p => p !== this);
+                        if (z.health <= 0) {
+                            zombies = zombies.filter(zz => zz !== z);
+                            for (let i = 0; i < 10; i++) {
+                                particles.push(new Particle(z.x, z.y, Math.random() * 6 - 3, Math.random() * 6 - 3, 'green', 300));
+                            }
+                        }
+                    }
+                });
+                if (this.x > TOTAL_WIDTH) {
+                    projectiles = projectiles.filter(p => p !== this);
+                }
+            }
+        }
+
+        class Sun {
+            constructor(x, y, fromPlant = false) {
+                this.x = x;
+                this.y = fromPlant ? y : -50;
+                this.targetY = fromPlant ? LAWN_Y + Math.random() * LAWN_HEIGHT : LAWN_Y + Math.random() * LAWN_HEIGHT;
+                this.lingerTimer = SUN_LINGER;
+                this.falling = true;
+                this.fromPlant = fromPlant;
+            }
+            update(dt) {
+                if (this.falling) {
+                    this.y += 2;
+                    if (this.y >= this.targetY) {
+                        this.y = this.targetY;
+                        this.falling = false;
+                    }
+                } else {
+                    this.lingerTimer -= dt;
+                    if (this.lingerTimer <= 0) {
+                        suns = suns.filter(s => s !== this);
+                    }
+                }
+            }
+        }
+
+        class Particle {
+            constructor(x, y, vx, vy, color, life) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.color = color;
+                this.life = life;
+                this.maxLife = life;
+            }
+            update(dt) {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= dt;
+                if (this.life <= 0) {
+                    particles = particles.filter(p => p !== this);
+                }
+            }
+        }
+
+        class Lawnmower {
+            constructor(row) {
+                this.row = row;
+                this.x = LAWN_X - 50;
+                this.y = LAWN_Y + row * CELL_SIZE + CELL_SIZE / 2;
+                this.active = false;
+                this.speed = 10;
+            }
+            activate() {
+                this.active = true;
+            }
+            update() {
+                if (this.active) {
+                    this.x += this.speed;
+                    // Kill zombies in row
+                    zombies = zombies.filter(z => !(z.row === this.row && z.x > this.x - 50 && z.x < this.x + 50));
+                    if (this.x > TOTAL_WIDTH) {
+                        lawnmowers = lawnmowers.filter(m => m !== this);
+                    }
+                }
+            }
+        }
+
+        // Initialize lawnmowers
+        for (let row = 0; row < 5; row++) {
+            lawnmowers.push(new Lawnmower(row));
+        }
+
+        // Draw functions
+        function drawHouse() {
+            // Roof
+            ctx.fillStyle = '#8B4513';
+            ctx.beginPath();
+            ctx.moveTo(0, LAWN_Y - 50);
+            ctx.lineTo(HOUSE_WIDTH, LAWN_Y);
+            ctx.lineTo(0, LAWN_Y + 50);
+            ctx.fill();
+            // Tiles
+            for (let i = 0; i < 10; i++) {
+                ctx.fillStyle = '#A52A2A';
+                ctx.fillRect(i * 20, LAWN_Y + 20, 20, 10);
+            }
+            // Wall
+            ctx.fillStyle = '#F5F5DC';
+            ctx.fillRect(0, LAWN_Y, HOUSE_WIDTH, LAWN_HEIGHT);
+            // Window
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(50, LAWN_Y + 100, 80, 80);
+            ctx.strokeStyle = '#FFF';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(50, LAWN_Y + 100, 80, 80);
+            // Gloss
+            ctx.beginPath();
+            ctx.arc(60, LAWN_Y + 110, 10, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFF';
+            ctx.globalAlpha = 0.5;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+            // Door
+            ctx.fillStyle = '#8B4513';
+            ctx.fillRect(60, LAWN_Y + 300, 60, 200);
+            ctx.beginPath();
+            ctx.arc(110, LAWN_Y + 400, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#FFD700';
+            ctx.fill();
+            // Doormat
+            ctx.fillStyle = '#808080';
+            ctx.fillRect(50, LAWN_Y + 490, 80, 10);
+            // Gutter
+            ctx.strokeStyle = '#A9A9A9';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(HOUSE_WIDTH - 10, LAWN_Y);
+            ctx.lineTo(HOUSE_WIDTH - 10, LAWN_Y + LAWN_HEIGHT);
+            ctx.stroke();
+        }
+
+        function drawLawn() {
+            for (let row = 0; row < 5; row++) {
+                for (let col = 0; col < 9; col++) {
+                    ctx.fillStyle = (row + col) % 2 === 0 ? '#76FF03' : '#32CD32';
+                    ctx.fillRect(LAWN_X + col * CELL_SIZE, LAWN_Y + row * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+                    // Grass blades
+                    ctx.strokeStyle = '#228B22';
+                    ctx.lineWidth = 1;
+                    for (let i = 0; i < 5; i++) {
+                        ctx.beginPath();
+                        ctx.moveTo(LAWN_X + col * CELL_SIZE + Math.random() * CELL_SIZE, LAWN_Y + row * CELL_SIZE + CELL_SIZE);
+                        ctx.lineTo(LAWN_X + col * CELL_SIZE + Math.random() * CELL_SIZE, LAWN_Y + row * CELL_SIZE + CELL_SIZE - 10);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function drawPlant(plant) {
+            ctx.save();
+            ctx.translate(plant.x, plant.y);
+            if (plant.type === 'sunflower') {
+                ctx.fillStyle = '#FFD700';
+                for (let i = 0; i < 8; i++) {
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, 20, 10, i * Math.PI / 4, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.fillStyle = '#8B4513';
+                ctx.beginPath();
+                ctx.arc(0, 0, 10, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (plant.type === 'peashooter') {
+                ctx.fillStyle = '#228B22';
+                ctx.fillRect(-5, 10, 10, 20);
+                ctx.fillStyle = '#32CD32';
+                ctx.beginPath();
+                ctx.arc(0, 0, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.fillStyle = '#000';
+                ctx.beginPath();
+                ctx.arc(10, 0, 5, 0, Math.PI * 2);
+                ctx.fill();
+            } else if (plant.type === 'cherrybomb') {
+                ctx.fillStyle = '#FF0000';
+                ctx.beginPath();
+                ctx.arc(-10, 0, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(10, 0, 15, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#228B22';
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, -15);
+                ctx.stroke();
+            } else if (plant.type === 'wallnut') {
+                ctx.fillStyle = '#8B4513';
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 20, 25, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = '#A0522D';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.moveTo(-15, -20);
+                ctx.lineTo(15, 20);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(-15, 20);
+                ctx.lineTo(15, -20);
+                ctx.stroke();
+            }
+            ctx.restore();
+        }
+
+        function drawZombie(zombie) {
+            ctx.save();
+            ctx.translate(zombie.x, zombie.y);
+            if (zombie.flashTimer > 0) ctx.globalAlpha = 0.5 + Math.sin(time / 20) * 0.5;
+            // Body
+            ctx.fillStyle = '#556B2F';
+            ctx.fillRect(-10, 0, 20, 40);
+            // Head
+            ctx.fillStyle = '#90EE90';
+            ctx.beginPath();
+            ctx.arc(0, -20, 15, 0, Math.PI * 2);
+            ctx.fill();
+            // Eyes
+            ctx.fillStyle = '#FFF';
+            ctx.beginPath();
+            ctx.arc(-5, -25, 5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(5, -25, 3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(-5, -25, 2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(5, -25, 1, 0, Math.PI * 2);
+            ctx.fill();
+            // Mouth
+            ctx.strokeStyle = '#000';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(-10, -15);
+            ctx.lineTo(10, -15);
+            ctx.stroke();
+            // Arms
+            ctx.strokeStyle = '#556B2F';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.moveTo(-15, 10);
+            ctx.lineTo(-25, 30);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(15, 10);
+            ctx.lineTo(25, 30);
+            ctx.stroke();
+            // Legs
+            ctx.beginPath();
+            ctx.moveTo(-5, 40);
+            ctx.lineTo(-5 - Math.sin(zombie.legAngle) * 10, 50);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(5, 40);
+            ctx.lineTo(5 + Math.sin(zombie.legAngle) * 10, 50);
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        function drawProjectile(proj) {
+            ctx.fillStyle = '#32CD32';
+            ctx.beginPath();
+            ctx.arc(proj.x, proj.y, 5, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawSun(s) {
+            ctx.fillStyle = '#FFD700';
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, 15, 0, Math.PI * 2);
+            ctx.fill();
+            for (let i = 0; i < 8; i++) {
+                ctx.beginPath();
+                ctx.moveTo(s.x, s.y);
+                ctx.lineTo(s.x + Math.cos(i * Math.PI / 4) * 20, s.y + Math.sin(i * Math.PI / 4) * 20);
+                ctx.strokeStyle = '#FFD700';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+        }
+
+        function drawParticle(p) {
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = p.life / p.maxLife;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.globalAlpha = 1;
+        }
+
+        function drawLawnmower(m) {
+            ctx.fillStyle = '#A9A9A9';
+            ctx.fillRect(m.x - 20, m.y - 15, 40, 30);
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(m.x - 10, m.y + 15, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(m.x + 10, m.y + 15, 10, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function drawUI() {
+            // Background
+            ctx.fillStyle = '#87CEEB';
+            ctx.fillRect(0, 0, TOTAL_WIDTH, UI_HEIGHT);
+            // Sun counter
+            ctx.fillStyle = '#000';
+            ctx.font = '30px Arial';
+            ctx.fillText(`Sun: ${sun}`, 20, 50);
+            // Cards
+            PLANT_TYPES.forEach((type, i) => {
+                const x = 150 + i * 100;
+                ctx.fillStyle = sun >= PLANTS[type].cost ? '#FFF' : '#CCC';
+                ctx.fillRect(x, 10, 80, 80);
+                if (icons[type].complete) {
+                    ctx.drawImage(icons[type], x + 15, 25, 50, 50);
+                }
+                ctx.fillStyle = '#000';
+                ctx.font = '20px Arial';
+                ctx.fillText(PLANTS[type].cost, x + 30, 80);
+                if (selectedPlant === type) {
+                    ctx.strokeStyle = '#FFD700';
+                    ctx.lineWidth = 3;
+                    ctx.strokeRect(x, 10, 80, 80);
+                }
+            });
+            // Progress bar
+            waveProgress = time / 300000; // assume 5 min game for progress
+            ctx.fillStyle = '#FFF';
+            ctx.fillRect(800, 20, 200, 20);
+            ctx.fillStyle = '#76FF03';
+            ctx.fillRect(800, 20, 200 * Math.min(1, waveProgress), 20);
+            ctx.fillStyle = '#000';
+            ctx.font = '20px Arial';
+            ctx.fillText('Progress', 850, 35);
+        }
+
+        function drawHugeWave() {
+            if (showHugeWaveText) {
+                ctx.fillStyle = '#FF0000';
+                ctx.font = '50px Arial';
+                ctx.fillText('HUGE WAVE!', TOTAL_WIDTH / 2 - 150, TOTAL_HEIGHT / 2);
+                hugeWaveTextTimer -= 16;
+                if (hugeWaveTextTimer <= 0) showHugeWaveText = false;
+            }
+        }
+
+        function drawGameOver() {
+            ctx.fillStyle = 'rgba(0,0,0,0.7)';
+            ctx.fillRect(0, 0, TOTAL_WIDTH, TOTAL_HEIGHT);
+            ctx.fillStyle = '#FF0000';
+            ctx.font = '60px Arial';
+            ctx.fillText('GAME OVER', TOTAL_WIDTH / 2 - 200, TOTAL_HEIGHT / 2);
+        }
+
+        // Main loop
+        let lastTime = 0;
+        function loop(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const dt = timestamp - lastTime;
+            lastTime = timestamp;
+
+            if (!gameOver) {
+                // Update
+                time += dt;
+                plants.forEach(p => p.update(dt));
+                zombies.forEach(z => z.update(dt));
+                projectiles.forEach(p => p.update());
+                suns.forEach(s => s.update(dt));
+                particles.forEach(p => p.update(dt));
+                lawnmowers.forEach(m => m.update());
+
+                // Spawn sun
+                if (Math.random() < 0.001) {
+                    suns.push(new Sun(200 + Math.random() * 800, -50));
+                }
+
+                // Spawn zombies
+                if (time > nextSpawn) {
+                    const row = Math.floor(Math.random() * 5);
+                    zombies.push(new Zombie(row));
+                    spawnInterval = Math.max(5000, spawnInterval - 100); // ramp down
+                    nextSpawn = time + spawnInterval + Math.random() * 2000;
+                }
+
+                // Huge wave
+                if (time > nextHugeWave) {
+                    showHugeWaveText = true;
+                    hugeWaveTextTimer = 3000;
+                    const num = 3 + Math.floor(Math.random() * 3);
+                    for (let i = 0; i < num; i++) {
+                        const row = Math.floor(Math.random() * 5);
+                        zombies.push(new Zombie(row));
+                    }
+                    nextHugeWave = time + hugeWaveTimer;
+                }
+            }
+
+            // Draw
+            ctx.clearRect(0, 0, TOTAL_WIDTH, TOTAL_HEIGHT);
+            drawLawn();
+            drawHouse();
+            lawnmowers.forEach(drawLawnmower);
+            plants.forEach(drawPlant);
+            zombies.forEach(drawZombie);
+            projectiles.forEach(drawProjectile);
+            suns.forEach(drawSun);
+            particles.forEach(drawParticle);
+            drawUI();
+            drawHugeWave();
+            if (gameOver) drawGameOver();
+
+            requestAnimationFrame(loop);
+        }
+
+        // Click handler
+        canvas.addEventListener('click', e => {
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+
+            if (gameOver) return;
+
+            // Select plant
+            if (my < UI_HEIGHT) {
+                PLANT_TYPES.forEach((type, i) => {
+                    const x = 150 + i * 100;
+                    if (mx > x && mx < x + 80 && my > 10 && my < 90 && sun >= PLANTS[type].cost) {
+                        selectedPlant = type;
+                    }
+                });
+                return;
+            }
+
+            // Collect sun
+            suns.forEach((s, i) => {
+                if (Math.abs(mx - s.x) < 20 && Math.abs(my - s.y) < 20) {
+                    sun += SUN_VALUE;
+                    suns.splice(i, 1);
+                }
+            });
+
+            // Place plant
+            if (selectedPlant) {
+                const col = Math.floor((mx - LAWN_X) / CELL_SIZE);
+                const row = Math.floor((my - LAWN_Y) / CELL_SIZE);
+                if (col >= 0 && col < 9 && row >= 0 && row < 5 && !grid[row][col]) {
+                    const plant = new Plant(selectedPlant, row, col);
+                    plants.push(plant);
+                    grid[row][col] = plant;
+                    sun -= PLANTS[selectedPlant].cost;
+                    selectedPlant = null;
+                }
+            }
+        });
+
+        requestAnimationFrame(loop);
+    </script>
+</body>
+</html>
