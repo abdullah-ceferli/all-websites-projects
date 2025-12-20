@@ -1,0 +1,46 @@
+{
+    "cards": {
+        "card1": {
+            "img": "https://css-task-12.netlify.app/img/shoes1.png",
+            "name": "Fake Shoes 1",
+            "price": 200,
+            "item-name": "Shoe",
+            "strock": 43
+        },
+        "card2": {
+            "img": "https://css-task-12.netlify.app/img/shoes2.png",
+            "name": "Fake Shoes 2",
+            "price": 180,
+            "item-name": "Men's Shoe",
+            "strock": 10
+        },
+        "card3": {
+            "img": "https://css-task-12.netlify.app/img/shoes3.png",
+            "name": "Fake Shoes 3",
+            "price": 200,
+            "item-name": "Shoe",
+            "strock": 443
+        },
+        "card4": {
+            "img": "https://css-task-12.netlify.app/img/shoes4.png",
+            "name": "Fake Shoes 4",
+            "price": 100,
+            "item-name": "Men's Shoe",
+            "strock": 87
+        },
+        "card5": {
+            "img": "https://css-task-12.netlify.app/img/shoes5.png",
+            "name": "Fake Shoes 5",
+            "price": 800,
+            "item-name": "Men's Shoe",
+            "strock": 4
+        },
+        "card6": {
+            "img": "https://css-task-12.netlify.app/img/shoes6.png",
+            "name": "Fake Shoes 6",
+            "price": 175,
+            "item-name": "Men's Shoe",
+            "strock": 17
+        }
+    }
+}
