@@ -13,3 +13,212 @@
     --bg-color: #008af8;
     --hover-color: #0071f8;
 }
+.trending-button{
+    margin-top: 32px;
+    text-align: right;
+}
+.trending-button a{
+    display: inline-block;
+    background-color: var(--primary-color);
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 30px;
+    border-radius: 25px;
+    transition: all .3s;
+}
+.trending-button a:hover {
+    background-color: var(--hover-color);
+    color: #fff;
+}
+.trending-main-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.trending-top{
+    width: 100%;
+    display: flex;
+    gap: 67%;
+}
+.most-played-top{
+    width: 100%;
+    display: flex;
+    gap: 73%;
+}
+.trending-footer{
+    display: flex;
+    gap: 3%;
+}
+.trending-item{
+    background-color: #eeeeee;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+    margin-bottom: 30px;
+}
+.trending-thumb{
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.trending-thumb-price{
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border-radius: 10px;
+    background-color: var(--bg-color);
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #fff;
+    padding: 8px 15px 6px 15px;
+}
+.trending-item-down-content{
+    padding: 25px;
+}
+.trending-item-category{
+    font-size: 14px;
+    color: #7a7a7a;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.trending-item-down-content h4{
+    font-size: 17px;
+    font-weight: 600;
+    transition: all .3s;
+}
+.trending-item-down-content a{
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    right: 25px;
+    bottom: 25px;
+    transition: all .3s;
+}
+.trending-item:hover .trending-item-down-content a{
+    background-color: var(--hover-color);
+}
+.trending-item:hover .trending-item-down-content h4{
+    color: var(--hover-color);
+}
+.trending-item:hover{
+    cursor: pointer;
+}
+.trending-item-down-content a i{
+    color: white;
+}
+.trending-box{
+    display: flex;
+    max-width: 1290px;
+    gap: 2%;
+    flex-wrap: wrap;
+}
+.trending-thumb-price em {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration: line-through;
+    display: block;
+    color: white;
+}
+.trending-filter {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 70px;
+}
+.trending-filter li {
+    display: inline-block;
+    margin: 5px 8px;
+}
+.trending-filter li a.is_active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.trending-filter li a:hover {
+    color: var(--primary-color);
+}
+.trending-filter li a {
+    display: inline-block;
+    text-align: center;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #1e1e1e;
+    background-color: #eee;
+    padding: 8px 20px;
+    border-radius: 25px;
+    transition: all .3s;
+}
+.trending-filter li a.is_active:hover {
+    color: #fff;
+}
+.main-trending-footer-ul{
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+.main-trending-footer-ul li {
+    display: inline-block;
+    margin: 0px 5px;
+}
+.main-trending-footer-ul li a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #eee;
+    color: #1e1e1e;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50%;
+    transition: all .3s;
+}
+.main-trending-footer-ul li:nth-child(3) a{
+    background-color: var(--bg-color);
+    color: white;
+}
+/* FILTER BUTTONS */
+.trending-filter a {
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.trending-filter a.is_active {
+  color: #00ffcc;
+  border-bottom: 2px solid #00ffcc;
+}
+.trending-item {
+    transition: 
+    opacity 0.3s ease,
+    transform 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+.trending-item.hide {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    position: absolute;
+}
+.trending-item.show {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
