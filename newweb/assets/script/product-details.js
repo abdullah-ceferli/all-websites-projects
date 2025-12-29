@@ -17,3 +17,32 @@ infoLinks.forEach(link => {
         window.scrollTo({ top: 0, behavior: "smooth" })
     })
 })
+    
+const tabLinks = document.querySelectorAll('.nav-item-link')
+const tabItems = document.querySelectorAll('.tab-pane')
+
+tabItems.forEach(item => item.classList.add('show'))
+
+tabLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        tabLinks.forEach(l => l.classList.remove('active'))
+        link.classList.add('active')
+
+        const targetId = link.dataset.bsTarget.replace('#', '')
+
+        tabItems.forEach(item => {
+            const match = item.id === targetId
+
+            if (match) {
+                item.classList.remove('hide')
+                item.classList.add('show')
+            } 
+            else {
+                item.classList.remove('show')
+                item.classList.add('hide')
+            }
+            })
+        })
+    })

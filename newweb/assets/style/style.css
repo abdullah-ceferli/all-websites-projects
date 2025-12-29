@@ -13,6 +13,9 @@
     --bg-color: #008af8;
     --hover-color: #0071f8;
 }
+.right-nav-bar ul li:nth-child(1) a{
+    background-color: rgba(255, 255, 255, 0.10);
+}
 /* @media (min-width: 1400px) {
     .container{
         max-width: 1320px;
@@ -214,25 +217,6 @@
     margin-top: 32px;
     text-align: right;
 }
-.trending-button a,
-.most-played-btn a{
-    display: inline-block;
-    background-color: var(--primary-color);
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    height: 50px;
-    line-height: 50px;
-    padding: 0px 30px;
-    border-radius: 25px;
-    transition: all .3s;
-}
-.trending-button a:hover,
-.most-played-btn a:hover {
-    background-color: var(--hover-color);
-    color: #fff;
-}
 .trending-main-section,
 .most-played-main{
     display: flex;
@@ -243,7 +227,7 @@
 .trending-top{
     width: 100%;
     display: flex;
-    gap: 67%;
+    gap: 65%;
 }
 .most-played-top{
     width: 100%;
@@ -254,7 +238,7 @@
 .most-played-footer,
 .categories-footer{
     display: flex;
-    gap: 3%;
+    gap: 2%;
 }
 .trending-item{
     background-color: #eeeeee;
@@ -312,8 +296,7 @@
 }
 .trending-item:hover .trending-item-down-content a,
 .most-played-footer-item:hover .most-played-footer-down-content a,
-.cta-subscribe form button:hover,
-.cta-shop-innert-btn a:hover{
+.cta-subscribe form button:hover{
     background-color: var(--hover-color);
     cursor: pointer;
 }
@@ -411,19 +394,6 @@
 .cta-shop-innert-btn,
 .cta-subscribe .section-heading{
     margin-top: 50px;
-}
-.cta-shop-innert-btn a{
-    display: inline-block;
-    background-color: var(--primary-color);
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    height: 50px;
-    line-height: 50px;
-    padding: 0px 30px;
-    border-radius: 25px;
-    transition: all .3s;
 }
 .cta-subscribe{
     background-color: #f7f7f7;

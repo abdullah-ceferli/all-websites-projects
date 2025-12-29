@@ -13,10 +13,16 @@
     --bg-color: #008af8;
     --hover-color: #0071f8;
 }
+.right-nav-bar ul li:nth-child(3) a{
+    background-color: rgba(255, 255, 255, 0.10);
+}
 p {
     font-size: 14px;
     line-height: 28px;
     color: #4a4a4a;
+}
+.fade {
+    transition: opacity .15s linear;
 }
 [type=submit]:not(:disabled), button:not(:disabled) {
     cursor: pointer;
@@ -116,4 +122,91 @@ p {
 }
 .single-product-footer{
     width: 100vh;
+}
+.main-tabs-content{
+    background-color: #f7f7f7;
+    border-radius: 25px;
+    padding: 60px;
+    transition: all 0.3s;
+}
+.nav-tabs-content ul{
+    border-bottom: none;
+    display: flex;
+}
+.nav-item{
+    border-right: 1px solid #d7d7d7;
+    margin-right: 30px;
+    padding-right: 30px;
+}
+.nav-item:last-child {
+    border-right: none;
+    margin-right: 0px;
+    padding-right: 0px;
+}
+.nav-item-link{
+    border: none;
+    border-radius: 0px;
+    background-color: transparent !important;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e1e1e;
+    padding: 0px;
+}
+.tab-content{
+    margin-top: 30px;
+}
+.tab-content {
+    position: relative;
+}
+.tab-pane {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+}
+.tab-pane.hide {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+}
+.tab-pane.show {
+    opacity: 1;
+    transform: scale(1);
+    position: relative;
+}
+.nav-item-link.active {
+    color: var(--hover-color);
+}
+.related-games-footer-item{
+    background-color: var(--hover-color);
+    position: relative;
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.related-games-footer-item h4{
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    padding: 22px;
+    margin-bottom: 0px;
+}
+.related-games-footer-thumb{
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+}
+.related-games{
+    display: flex;
+    flex-direction: column;
+}
+.related-games-top{
+    width: 100%;
+    display: flex;
+    gap: 65%;
+}
+.related-games-footer{
+    display: flex;
+    gap: 2%;
 }
