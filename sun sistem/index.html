@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="solar-sistem">
+            <div class="sun"></div>
+            <div class="orbit orbit-of-mercury">
+                <div class="mercury"></div>
+            </div>
+            <div class="orbit orbit-of-venus">
+                <div class="venus"></div>
+            </div>
+            <div class="orbit orbit-of-earth-and-moon">
+                <div class="earth"></div>
+                <div class="orbit orbit-of-moon">
+                    <div class="moon"></div>
+                </div>
+            </div>
+            <div class="orbit orbit-of-mars">
+                <div class="mars"></div>
+            </div>
+            <div class="orbit orbit-of-jupiter">
+                <div class="jupiter"></div>
+            </div>
+            <div class="orbit orbit-of-saturn">
+                <div class="saturn"></div>
+            </div>
+            <div class="orbit orbit-of-uranus">
+                <div class="uranus"></div>
+            </div>
+            <div class="orbit orbit-of-neptun">
+                <div class="neptun"></div>
+            </div>
+        </div>
+    </div>
+    
+<script>
+function spawnStars(count) {
+        const wrapper = document.querySelector(".wrapper")
+        if (!wrapper) {
+            alert("Wrapper not found!")
+            return
+        }
+        
+        for (let i = 0; i < count; i++) {
+            let star = document.createElement("div")
+            star.classList.add("star")
+
+            let x = Math.random() * wrapper.clientWidth
+            let y = Math.random() * wrapper.clientHeight
+
+            console.log(`Star ${i + 1}: x=${x}, y=${y}`)
+
+            star.style.left = `${x}px`
+            star.style.top = `${y}px`
+
+            wrapper.appendChild(star)
+        }
+    }
+
+    spawnStars(150)
+</script>
+</body>
+</html>
