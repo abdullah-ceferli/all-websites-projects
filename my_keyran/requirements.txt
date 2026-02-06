@@ -1,0 +1,4 @@
+keyboard
+mouse
+pynput
+pillow          # for better looking icons if you want later

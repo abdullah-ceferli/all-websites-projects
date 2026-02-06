@@ -1,0 +1,23 @@
+<Root>
+  <DefaultMacro>
+    <Major></Major>
+    <Description>macro for wallhop in roblox. you can use it in wallhop obby's, in you versus homer you can easily run from homer and catch people as a homer</Description>
+    <Comment>https://keyran.net - Free macros download | Скачать бесплатные макросы </Comment>
+    <GUIOption>
+      <RepeatType>0</RepeatType>
+    </GUIOption>
+    <KeyUp>
+      <Syntax></Syntax>
+    </KeyUp>
+    <KeyDown>
+      <Syntax>KeyDown 55 1
+Delay 90 ms
+KeyDown 54 1
+Delay 49 ms
+KeyUp 55 1
+Delay 67 ms
+KeyUp 54 1</Syntax>
+    </KeyDown>
+    <Software>Roblox</Software>
+  </DefaultMacro>
+</Root>
