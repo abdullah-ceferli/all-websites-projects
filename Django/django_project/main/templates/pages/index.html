@@ -1,0 +1,380 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/own-bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-sticky">
+                <nav class="nav-bar">
+                    <div class="container nav-bar-container">
+                        <div class="left-nav-bar">
+                            <div class="logo-nav-bar">
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'img/logo.png' %}" alt="Logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-nav-bar">
+                            <div class="menu-nav-bar">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'shop' %}">Our Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product_details' %}">Product Details</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact_us' %}">Contact Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'login' %}">SIGN IN</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="hero-section">
+                <div class="hero-banner">
+                    <div class="container hero-container">
+                        <div class="hero-banner-txt">
+                            <h6>Welcome to lugx</h6>
+                            <h2>BEST GAMING SITE EVER!</h2>
+                            <p>LUGX Gaming is free Bootstrap 5 HTML CSS website template for your gaming websites. You
+                                can download and use this layout for commercial purposes. Please tell your friends about
+                                TemplateMo.</p>
+                            <div class="hero-search-input">
+                                <form id="search" action="#">
+                                    <input type="text" placeholder="Type Something" id="searchText" name="searchKeyword"
+                                        onkeypress="handle">
+                                    <button role="button">Search Now</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="hero-banner-img">
+                            <div class="hero-right-image">
+                                <img src="{% static 'img/assasin.jpg' %}" alt="">
+                                <span class="hero-banner-price">$22</span>
+                                <span class="hero-banner-offer">-40%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main-features">
+                <div class="container">
+                    <div class="row">
+                        <div class="features-card">
+                            <a href="">
+                                <div class="features-item">
+                                    <div class="features-item-img">
+                                        <img src="{% static 'img/featured-01.png' %}" alt="">
+                                    </div>
+                                    <h4>Free Storage</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="features-card">
+                            <a href="">
+                                <div class="features-item">
+                                    <div class="features-item-img">
+                                        <img src="{% static 'img/featured-02.png' %}" alt="">
+                                    </div>
+                                    <h4>User More</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="features-card">
+                            <a href="">
+                                <div class="features-item">
+                                    <div class="features-item-img">
+                                        <img src="{% static 'img/featured-03.png' %}" alt="">
+                                    </div>
+                                    <h4>Reply Ready</h4>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="features-card">
+                            <a href="">
+                                <div class="features-item">
+                                    <div class="features-item-img">
+                                        <img src="{% static 'img/featured-04.png' %}" alt="">
+                                    </div>
+                                    <h4>Easy Layout</h4>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-trending section">
+                <div class="container">
+                    <div class="trending-main-section">
+                        <div class="trending-top">
+                            <div class="section-heading">
+                                <div>
+                                    <h6>Trending</h6>
+                                    <h2>Trending Games</h2>
+                                </div>
+                            </div>
+                            <div class="trending-top-right">
+                                <div class="trending-button main-button">
+                                    <a href="{% url 'shop' %}">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trending-footer">
+                            <div class="trending-item">
+                                <div class="trending-thumb">
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                    </a>
+                                    <span class="trending-thumb-price">$32</span>
+                                </div>
+                                <div class="trending-item-down-content">
+                                    <span class="trending-item-category">Action</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-thumb">
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                    </a>
+                                    <span class="trending-thumb-price">$32</span>
+                                </div>
+                                <div class="trending-item-down-content">
+                                    <span class="trending-item-category">Action</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-thumb">
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                    </a>
+                                    <span class="trending-thumb-price">$32</span>
+                                </div>
+                                <div class="trending-item-down-content">
+                                    <span class="trending-item-category">Action</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="trending-item">
+                                <div class="trending-thumb">
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/trending-04.jpg' %}" alt="">
+                                    </a>
+                                    <span class="trending-thumb-price">$32</span>
+                                </div>
+                                <div class="trending-item-down-content">
+                                    <span class="trending-item-category">Action</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">
+                                        <i class="fa fa-shopping-bag"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-most-played section">
+                <div class="container">
+                    <div class="most-played-main">
+                        <div class="most-played-top">
+                            <div class="section-heading">
+                                <h6>TOP GAMES</h6>
+                                <h2>Most Played</h2>
+                            </div>
+                            <div class="most-played-right">
+                                <div class="most-played-btn main-button">
+                                    <a href="{% url 'shop' %}">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="most-played-footer">
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-01.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-02.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-03.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-04.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-05.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                            <div class="most-played-footer-item">
+                                <div class="most-played-footer-thumb">
+                                    <a href="{% url 'product_details' %}"><img
+                                            src="{% static 'img/top-game-06.jpg' %}" alt=""></a>
+                                </div>
+                                <div class="most-played-footer-down-content">
+                                    <span class="most-played-footer-category">Adventure</span>
+                                    <h4>Assasin Creed</h4>
+                                    <a href="{% url 'product_details' %}">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-categories section">
+                <div class="container">
+                    <div class="categories-top">
+                        <div class="section-heading">
+                            <h6>Categories</h6>
+                            <h2>Top Categories</h2>
+                        </div>
+                    </div>
+                    <div class="categories-footer">
+                        <div class="categories-footer-item">
+                            <h4>Action</h4>
+                            <div class="categories-footer-thumb">
+                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-01.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                        <div class="categories-footer-item">
+                            <h4>Action</h4>
+                            <div class="categories-footer-thumb">
+                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-05.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                        <div class="categories-footer-item">
+                            <h4>Action</h4>
+                            <div class="categories-footer-thumb">
+                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-03.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                        <div class="categories-footer-item">
+                            <h4>Action</h4>
+                            <div class="categories-footer-thumb">
+                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-04.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                        <div class="categories-footer-item">
+                            <h4>Action</h4>
+                            <div class="categories-footer-thumb">
+                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-05.jpg' %}"
+                                        alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-cta section">
+                <div class="container">
+                    <div class="cta">
+                        <div class="cta-shop">
+                            <div class="cta-shop-innert">
+                                <div class="section-heading">
+                                    <h6>Our Shop</h6>
+                                    <h2>Go Pre-Order Buy &amp; Get Best <em>Prices</em> For You!</h2>
+                                </div>
+                                <p>Lorem ipsum dolor consectetur adipiscing, sed do eiusmod tempor incididunt.</p>
+                                <div class="cta-shop-innert-btn main-button">
+                                    <a href="{% url 'shop' %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cta-subscribe">
+                            <div class="section-heading">
+                                <h6>NEWSLETTER</h6>
+                                <h2>Get Up To $100 Off Just Buy <em>Subscribe</em> Newsletter!</h2>
+                            </div>
+                            <div class="cta-subscribe-search-input">
+                                <form action="#">
+                                    <input type="email" aria-describedby="emailHelp" placeholder="Your email...">
+                                    <button type="submit">Subscribe Now</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href=""
+                        target="_blank">Design: TemplateMo</a></p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

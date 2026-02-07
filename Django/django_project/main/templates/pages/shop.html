@@ -1,0 +1,435 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/own-bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-sticky">
+                <nav class="nav-bar">
+                    <div class="container nav-bar-container">
+                        <div class="left-nav-bar">
+                            <div class="logo-nav-bar">
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-nav-bar">
+                            <div class="menu-nav-bar">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'shop' %}">Our Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product_details' %}">Product Details</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact_us' %}">Contact Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'login' %}">SIGN IN</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-heading">
+                <div class="container">
+                    <div class="header-txt">
+                        <h3>Our Shop</h3>
+                        <span class="page-heading-breadcrumb">
+                            <a href="{% url 'home' %}">Home</a> &gt; Our Shop
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="section main-trending">
+                <div class="container">
+                    <ul class="trending-filter">
+                        <li>
+                            <a class="is_active" href="#!" data-filter="*" id="showAll">Show All</a>
+                        </li>
+                        <li>
+                            <a href="#!" data-filter=".adv" id="adventure">Adventure</a>
+                        </li>
+                        <li>
+                            <a href="#!" data-filter=".str" id="strategy">Strategy</a>
+                        </li>
+                        <li>
+                            <a href="#!" data-filter=".rac" id="racing">Racing</a>
+                        </li>
+                    </ul>
+                    <div class="trending-box">
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">
+                                    <em>$36</em>
+                                    $32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-04.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- adv -->
+                        <div class="trending-item adv">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-04.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item adv">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item adv">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item adv">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-04.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item adv">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- str -->
+                        <div class="trending-item str">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item str">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item str">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item str">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- rac -->
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-03.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-04.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="trending-item rac">
+                            <div class="trending-thumb">
+                                <a href="{% url 'product_details' %}">
+                                    <img src="{% static 'img/trending-02.jpg' %}" alt="">
+                                </a>
+                                <span class="trending-thumb-price">$32</span>
+                            </div>
+                            <div class="trending-item-down-content">
+                                <span class="trending-item-category">Action</span>
+                                <h4>Assasin Creed</h4>
+                                <a href="{% url 'product_details' %}">
+                                    <i class="fa fa-shopping-bag"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="main-trending-footer">
+                        <div class="row">
+                            <ul class="main-trending-footer-ul">
+                                <li>
+                                    <a href="#"> &lt; </a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#"> &gt; </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href=""
+                        target="_blank">Design: TemplateMo</a></p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'js/shop.js' %}"></script>
+</body>
+
+</html>

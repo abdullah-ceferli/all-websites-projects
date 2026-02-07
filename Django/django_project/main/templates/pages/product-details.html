@@ -1,0 +1,228 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product details</title>
+    <link rel="stylesheet" href="{% static 'css/product-details.css' %}">
+    <link rel="stylesheet" href="{% static 'css/own-bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header-sticky">
+                <nav class="nav-bar">
+                    <div class="container nav-bar-container">
+                        <div class="left-nav-bar">
+                            <div class="logo-nav-bar">
+                                <a href="{% url 'home' %}">
+                                    <img src="{% static 'img/logo.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="right-nav-bar">
+                            <div class="menu-nav-bar">
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'home' %}">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'shop' %}">Our Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'product_details' %}">Product Details</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'contact_us' %}">Contact Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'login' %}">SIGN IN</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="page-heading">
+                <div class="container">
+                    <div class="header-txt">
+                        <h3>Modern Warfare® II</h3>
+                        <span class="page-heading-breadcrumb">
+                            <a href="{% url 'home' %}">Home</a> &gt; 
+                            <a href="{% url 'shop' %}">Shop</a> &gt; 
+                            Assasin Creed
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main-single-product section">
+                <div class="container">
+                    <div class="row">
+                        <div class="single-product">
+                            <div class="single-product-left">
+                                <div class="single-product-left-img">
+                                    <img src="{% static 'img/single-game.jpg' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="single-product-right">
+                                <h4>Call of Duty®: Modern Warfare® II</h4>
+                                <span class="single-product-right-price"><em>$28</em> $22</span>
+                                <p>LUGX Gaming Template is based on the latest Bootstrap 5 CSS framework. This template
+                                    is provided by TemplateMo and it is suitable for your gaming shop ecommerce
+                                    websites. Feel free to use this for any purpose. Thank you.</p>
+                                <form id="qty" action="#">
+                                    <input type="number" class="form-control" id="1" aria-describedby="quantity"
+                                        placeholder="1" min="1">
+                                    <button type="submit"><i class="fa fa-shopping-bag"></i> ADD TO CART</button>
+                                </form>
+                                <ul class="game-info">
+                                    <li>
+                                        <span>Game ID:</span>
+                                        <a href="#">COD MMII</a>
+                                    </li>
+                                    <li>
+                                        <span>Genre:</span>
+                                        <a href="#">Action</a>
+                                        , <a href="#">Team</a>,
+                                        <a href="#">Single</a>
+                                    </li>
+                                    <li>
+                                        <span>Multi-tags:</span>
+                                        <a href="#">War</a>,
+                                        <a href="#">Battle</a>,
+                                        <a href="#">Royal</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="single-product-footer">
+                                <div class="sep"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-more-info">
+                <div class="container">
+                    <div class="row">
+                        <div class="main-tabs-content">
+                            <div class="row">
+                                <div class="nav-tabs-content">
+                                    <ul role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-item-link active" id="description-tab"
+                                                data-bs-toggle="tab" data-bs-target="#description" type="button"
+                                                role="tab" aria-controls="description"
+                                                aria-selected="true">Description</button>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <button class="nav-item-link" id="reviews-tab" data-bs-toggle="tab"
+                                                data-bs-target="#reviews" type="button" role="tab"
+                                                aria-controls="reviews" aria-selected="false" tabindex="-1">Reviews
+                                                (3)</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active" id="description" role="tabpanel"
+                                        aria-labelledby="description-tab">
+                                        <p>You can search for more templates on Google Search using keywords such as
+                                            "templatemo digital marketing", "templatemo one-page", "templatemo gallery",
+                                            etc. Please tell your friends about our website. If you need a variety of
+                                            HTML templates, you may visit Tooplate and Too CSS websites.</p>
+                                        <br>
+                                        <p>Coloring book air plant shabby chic, crucifix normcore raclette cred swag
+                                            artisan activated charcoal. PBR&B fanny pack pok pok gentrify truffaut
+                                            kitsch helvetica jean shorts edison bulb poutine next level humblebrag la
+                                            croix adaptogen. Hashtag poke literally locavore, beard marfa kogi bruh
+                                            artisan succulents seitan tonx waistcoat chambray taxidermy. Same cred
+                                            meggings 3 wolf moon lomo irony cray hell of bitters asymmetrical
+                                            gluten-free art party raw denim chillwave tousled try-hard succulents street
+                                            art.</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="reviews" role="tabpanel"
+                                        aria-labelledby="reviews-tab">
+                                        <p>Coloring book air plant shabby chic, crucifix normcore raclette cred swag
+                                            artisan activated charcoal. PBR&B fanny pack pok pok gentrify truffaut
+                                            kitsch helvetica jean shorts edison bulb poutine next level humblebrag la
+                                            croix adaptogen. <br><br>Hashtag poke literally locavore, beard marfa kogi
+                                            bruh artisan succulents seitan tonx waistcoat chambray taxidermy. Same cred
+                                            meggings 3 wolf moon lomo irony cray hell of bitters asymmetrical
+                                            gluten-free art party raw denim chillwave tousled try-hard succulents street
+                                            art.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-related-games section">
+                <div class="container">
+                    <div class="related-games">
+                        <div class="related-games-top">
+                            <div class="section-heading">
+                                <h6>Action</h6>
+                                <h2>Related Games</h2>
+                            </div>
+                            <div class="related-games-top-right">
+                                <div class="related-games-button main-button">
+                                    <a href="{% url 'shop' %}">View All</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="related-games-footer">
+                            <div class="related-games-footer-item">
+                                <h4>Action</h4>
+                                <div class="related-games-footer-thumb">
+                                    <a href=""><img src="{% static 'img/categories-01.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="related-games-footer-item">
+                                <h4>Action</h4>
+                                <div class="related-games-footer-thumb">
+                                    <a href=""><img src="{% static 'img/categories-05.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="related-games-footer-item">
+                                <h4>Action</h4>
+                                <div class="related-games-footer-thumb">
+                                    <a href=""><img src="{% static 'img/categories-03.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="related-games-footer-item">
+                                <h4>Action</h4>
+                                <div class="related-games-footer-thumb">
+                                    <a href=""><img src="{% static 'img/categories-04.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="related-games-footer-item">
+                                <h4>Action</h4>
+                                <div class="related-games-footer-thumb">
+                                    <a href=""><img src="{% static 'img/categories-05.jpg' %}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <p>Copyright © 2048 LUGX Gaming Company. All rights reserved.   <a rel="nofollow" href=""
+                        target="_blank">Design: TemplateMo</a></p>
+            </div>
+        </footer>
+    </div>
+    <script src="{% static 'js/product-details.js' %}"></script>
+</body>
+
+</html>
