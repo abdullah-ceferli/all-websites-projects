@@ -17,6 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from main.views import home, find404
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home),
+    path('404/', find404)
 ]
