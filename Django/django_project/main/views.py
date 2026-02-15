@@ -1,44 +1,8 @@
-# from django.shortcuts import render, redirect
-# from django.contrib.auth import authenticate, login
-# from django.contrib.auth.models import User
-# from django.contrib import messages
-
-# def login_view(request):
-#     if request.method == 'POST':
-#         email = request.POST.get('email')
-#         password = request.POST.get('password')
-#         user = authenticate(request, username=email, password=password) 
-#         if user is not None:
-#             login(request, user)
-#             return redirect('home')
-#         else:
-#             messages.error(request, 'Invalid credentials')
-#     return render(request, 'login.html')
-
-# def register_view(request):
-#     if request.method == 'POST':
-#         username = request.POST.get('username')
-#         email = request.POST.get('email')
-#         phone = request.POST.get('phone')
-#         password = request.POST.get('password')
-
-#         if User.objects.filter(username=username).exists():
-#             messages.error(request, 'Username already taken')
-#         elif User.objects.filter(email=email).exists():
-#             messages.error(request, 'Email already registered')
-#         else:
-#             user = User.objects.create_user(
-#                 username=username,
-#                 email=email,
-#                 password=password
-#             )
-#             user.save()
-#             login(request, user)
-#             return redirect('home')
-#     return render(request, 'login.html')
-
-
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib import messages
+from .forms import OptionalEmailUserCreationForm 
 # Create your views here.
 
 def home(request):
@@ -53,5 +17,37 @@ def product_details(request):
 def contact_us(request):
     return render(request, 'pages/contact-us.html')
 
-def login(request):
-    return render(request, 'pages/login.html')
+def register_view(request):
+    if request.method == 'POST':
+        form = OptionalEmailUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('login')
+        else:
+            messages.error(request, "Registration failed. Please check the errors below.")
+    else:
+        form = OptionalEmailUserCreationForm()
+    
+    return render(request, 'pages/register.html', {'form': form})
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+        else:
+            messages.error(request, "Invalid username or password.")
+    else:
+        form = AuthenticationForm()
+    return render(request, 'pages/login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')

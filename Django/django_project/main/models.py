@@ -11,9 +11,9 @@ class Products(models.Model):
     
     description = models.TextField()
     
-    genre = models.CharField()
-    
     game_id = models.CharField()
+    
+    genre = models.CharField()
     
     multi_tag = models.CharField()
     

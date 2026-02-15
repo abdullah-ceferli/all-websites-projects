@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+<!-- Coding By CodingNepal - youtube.com/codingnepal -->
 <html lang="en" dir="ltr">
   <head>
     {% load static %}
     <meta charset="utf-8">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
   </head>
   <body>
     <div class="center">
-      <h1>Login</h1>
+      <h1>Register</h1>
 
       {% if messages %}
           {% for message in messages %}
@@ -23,6 +24,18 @@
       <form method="POST">
 
         {% csrf_token %}
+      
+        <div class="txt_field">
+            <input type="text" required name="first_name">
+            <span></span>
+            <label>First Name</label>
+          </div>
+
+          <div class="txt_field">
+            <input type="text" required name="last_name">
+            <span></span>
+            <label>Last Name</label>
+          </div>
 
         <div class="txt_field">
           <input type="text" required name="username">
@@ -31,15 +44,21 @@
         </div>
 
         <div class="txt_field">
+            <input type="email" required name="email">
+            <span></span>
+            <label>Email</label>
+          </div>
+
+        <div class="txt_field">
           <input type="password" required name="password">
           <span></span>
           <label>Password</label>
-        </div>
+        </div>    
 
-        <input type="submit" value="Login">
+        <!-- <div class="pass">Forgot Password?</div> -->
+        <input type="submit" value="Register">
         <div class="signup_link">
-          Not a member? <a href="{% url 'register' %}">Signup</a>
-          <p>Forgot your Password? <a href="{% url 'forgot-password' %}">Reset Password</a></p> 
+          Already have an account? <a href="{% url 'login' %}">Login</a>
         </div>
       </form>
     </div>
