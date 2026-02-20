@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/own-bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
@@ -40,7 +40,7 @@
                                         <a href="{% url 'contact_us' %}">Contact Us</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'login' %}">SIGN IN</a>
+                                        <a href="{% url 'register' %}">SIGN IN</a>
                                     </li>
                                 </ul>
                             </div>
@@ -140,66 +140,23 @@
                             </div>
                         </div>
                         <div class="trending-footer">
+                            {% for item in product_details %}
                             <div class="trending-item">
                                 <div class="trending-thumb">
                                     <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/trending-01.jpg' %}" alt="">
+                                        <img src="{{ item.image.url }}" alt="">
                                     </a>
-                                    <span class="trending-thumb-price">$32</span>
+                                    <span class="trending-thumb-price"><em>{{ item.old_price }}</em> {{ item.price }}</span>
                                 </div>
                                 <div class="trending-item-down-content">
-                                    <span class="trending-item-category">Action</span>
-                                    <h4>Assasin Creed</h4>
+                                    <span class="trending-item-category">{{ item.category_name }}</span>
+                                    <h4>{{ item.name }}</h4>
                                     <a href="{% url 'product_details' %}">
                                         <i class="fa fa-shopping-bag"></i>
                                     </a>
                                 </div>
                             </div>
-                            <div class="trending-item">
-                                <div class="trending-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/trending-02.jpg' %}" alt="">
-                                    </a>
-                                    <span class="trending-thumb-price">$32</span>
-                                </div>
-                                <div class="trending-item-down-content">
-                                    <span class="trending-item-category">Action</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">
-                                        <i class="fa fa-shopping-bag"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="trending-item">
-                                <div class="trending-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/trending-03.jpg' %}" alt="">
-                                    </a>
-                                    <span class="trending-thumb-price">$32</span>
-                                </div>
-                                <div class="trending-item-down-content">
-                                    <span class="trending-item-category">Action</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">
-                                        <i class="fa fa-shopping-bag"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="trending-item">
-                                <div class="trending-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/trending-04.jpg' %}" alt="">
-                                    </a>
-                                    <span class="trending-thumb-price">$32</span>
-                                </div>
-                                <div class="trending-item-down-content">
-                                    <span class="trending-item-category">Action</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">
-                                        <i class="fa fa-shopping-bag"></i>
-                                    </a>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -221,8 +178,8 @@
                         <div class="most-played-footer">
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-01.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/top-game-01.jpg' %}" alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>
@@ -232,8 +189,8 @@
                             </div>
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-02.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/top-game-02.jpg' %}" alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>
@@ -243,8 +200,8 @@
                             </div>
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-03.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/top-game-03.jpg' %}" alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>
@@ -254,8 +211,9 @@
                             </div>
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-04.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}">
+                                        <img src="{% static 'img/top-game-04.jpg' %}" alt="">
+                                    </a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>
@@ -265,8 +223,8 @@
                             </div>
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-05.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}"><img src="{% static 'img/top-game-05.jpg' %}"
+                                            alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>
@@ -276,8 +234,8 @@
                             </div>
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img
-                                            src="{% static 'img/top-game-06.jpg' %}" alt=""></a>
+                                    <a href="{% url 'product_details' %}"><img src="{% static 'img/top-game-06.jpg' %}"
+                                            alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
                                     <span class="most-played-footer-category">Adventure</span>

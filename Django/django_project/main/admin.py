@@ -1,6 +1,8 @@
 from django.contrib import admin
-from main.models import Products
+from main.models import *
 
 # Register your models here.
 
-admin.site.register(Products)
+admin.site.register(ProductDetails)
+
+admin.site.register(PasswordReset)
