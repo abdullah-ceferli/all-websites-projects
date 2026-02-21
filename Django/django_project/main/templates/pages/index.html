@@ -40,7 +40,7 @@
                                         <a href="{% url 'contact_us' %}">Contact Us</a>
                                     </li>
                                     <li>
-                                        <a href="{% url 'register' %}">SIGN IN</a>
+                                        <a href="{% url 'sign_up' %}">SIGN IN</a>
                                     </li>
                                 </ul>
                             </div>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                         <div class="trending-footer">
-                            {% for item in product_details %}
+                            {% for item in trending_games %}
                             <div class="trending-item">
                                 <div class="trending-thumb">
                                     <a href="{% url 'product_details' %}">
@@ -176,73 +176,19 @@
                             </div>
                         </div>
                         <div class="most-played-footer">
+                            {% for item in most_played %}
                             <div class="most-played-footer-item">
                                 <div class="most-played-footer-thumb">
                                     <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/top-game-01.jpg' %}" alt=""></a>
+                                        <img src="{{ item.image.url }}" alt=""></a>
                                 </div>
                                 <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
+                                    <span class="most-played-footer-category">{{ item.category_name }}</span>
+                                    <h4>{{ item.name }}</h4>
                                     <a href="{% url 'product_details' %}">Explore</a>
                                 </div>
                             </div>
-                            <div class="most-played-footer-item">
-                                <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/top-game-02.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">Explore</a>
-                                </div>
-                            </div>
-                            <div class="most-played-footer-item">
-                                <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/top-game-03.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">Explore</a>
-                                </div>
-                            </div>
-                            <div class="most-played-footer-item">
-                                <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}">
-                                        <img src="{% static 'img/top-game-04.jpg' %}" alt="">
-                                    </a>
-                                </div>
-                                <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">Explore</a>
-                                </div>
-                            </div>
-                            <div class="most-played-footer-item">
-                                <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img src="{% static 'img/top-game-05.jpg' %}"
-                                            alt=""></a>
-                                </div>
-                                <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">Explore</a>
-                                </div>
-                            </div>
-                            <div class="most-played-footer-item">
-                                <div class="most-played-footer-thumb">
-                                    <a href="{% url 'product_details' %}"><img src="{% static 'img/top-game-06.jpg' %}"
-                                            alt=""></a>
-                                </div>
-                                <div class="most-played-footer-down-content">
-                                    <span class="most-played-footer-category">Adventure</span>
-                                    <h4>Assasin Creed</h4>
-                                    <a href="{% url 'product_details' %}">Explore</a>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -328,7 +274,7 @@
         <footer class="footer">
             <div class="container">
                 <p>Copyright © 2048 LUGX Gaming Company. All rights reserved. &nbsp;&nbsp; <a rel="nofollow" href=""
-                        target="_blank">Design: TemplateMo</a> <a href="{% url 'logout' %}">Logout</a></p>
+                        target="_blank">Design: TemplateMo</a></p>
             </div>
         </footer>
     </div>

@@ -5,4 +5,4 @@ from main.models import *
 
 admin.site.register(ProductDetails)
 
-admin.site.register(PasswordReset)
+admin.site.register(SignUp)
