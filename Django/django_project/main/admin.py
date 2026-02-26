@@ -6,3 +6,5 @@ from main.models import *
 admin.site.register(ProductDetails)
 
 admin.site.register(SignUp)
+
+admin.site.register(UserMessage)

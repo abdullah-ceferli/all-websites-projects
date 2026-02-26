@@ -188,7 +188,6 @@
     background-color: var(--hover-color);
     color: white;
 }
-/* FILTER BUTTONS */
 .trending-filter a {
   cursor: pointer;
   padding: 8px 16px;
@@ -196,7 +195,6 @@
   color: #fff;
   transition: color 0.3s ease;
 }
-
 .trending-filter a.is_active {
   color: #00ffcc;
   border-bottom: 2px solid #00ffcc;
@@ -207,6 +205,15 @@
     transform 0.3s ease;
     opacity: 1;
     transform: scale(1);
+    max-width: 299.986px;
+    height: 330.222px;
+    width: 100%;
+}
+.trending-thumb img{
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .trending-item.hide {
     opacity: 0;

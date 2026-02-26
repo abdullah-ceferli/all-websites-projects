@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -94,44 +96,48 @@
                                 </div>
                                 <div class="contact-page-right-footer">
                                     <div class="contact-form">
-                                        <div class="contact-form-input">
-                                            <div>
+                                        <form method="POST">
+                                            {% csrf_token %}
+                                            <div class="contact-form-input">
+                                                <div>
+                                                    <fieldset>
+                                                        <input type="text" name="name" id="name"
+                                                            placeholder="Your Name..." autocomplete="on" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <div>
+                                                    <fieldset>
+                                                        <input type="text" name="surname" id="surname"
+                                                            placeholder="Your Surname..." autocomplete="on" required="">
+                                                    </fieldset>
+                                                </div>
+                                                <div>
+                                                    <fieldset>
+                                                        <input type="email" name="email" id="email"
+                                                            pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..."
+                                                            required="">
+                                                    </fieldset>
+                                                </div>
+                                                <div>
+                                                    <fieldset>
+                                                        <input type="text" name="subject" id="subject"
+                                                            placeholder="Subject..." autocomplete="on">
+                                                    </fieldset>
+                                                </div>
+                                            </div>
+                                            <div class="contact-form-textarea">
                                                 <fieldset>
-                                                    <input type="text" name="name" id="name" placeholder="Your Name..."
-                                                        autocomplete="on" required="">
+                                                    <textarea name="message" id="message"
+                                                        placeholder="Your Message"></textarea>
                                                 </fieldset>
                                             </div>
                                             <div>
                                                 <fieldset>
-                                                    <input type="text" name="surname" id="surname"
-                                                        placeholder="Your Surname..." autocomplete="on" required="">
+                                                    <button type="submit" id="form-submit" class="orange-button">Send
+                                                        Message Now</button>
                                                 </fieldset>
                                             </div>
-                                            <div>
-                                                <fieldset>
-                                                    <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*"
-                                                        placeholder="Your E-mail..." required="">
-                                                </fieldset>
-                                            </div>
-                                            <div>
-                                                <fieldset>
-                                                    <input type="text" name="subject" id="subject"
-                                                        placeholder="Subject..." autocomplete="on">
-                                                </fieldset>
-                                            </div>
-                                        </div>
-                                        <div class="contact-form-textarea">
-                                            <fieldset>
-                                                <textarea name="message" id="message"
-                                                    placeholder="Your Message"></textarea>
-                                            </fieldset>
-                                        </div>
-                                        <div>
-                                            <fieldset>
-                                                <button type="submit" id="form-submit" class="orange-button">Send
-                                                    Message Now</button>
-                                            </fieldset>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

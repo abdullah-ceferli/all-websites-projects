@@ -146,7 +146,19 @@
                                     <a href="{% url 'product_details' %}">
                                         <img src="{{ item.image.url }}" alt="">
                                     </a>
-                                    <span class="trending-thumb-price"><em>{{ item.old_price }}</em> {{ item.price }}</span>
+                                    {% if item.price == "free" %}
+                                    <span class="trending-thumb-price">Free</span>
+
+                                    {% elif item.old_price != "not_have" %}
+                                    <span class="trending-thumb-price">
+                                        <em>{{ item.old_price }}</em> {{ item.price }}
+                                    </span>
+
+                                    {% else %}
+                                    <span class="trending-thumb-price">
+                                        {{ item.price }}
+                                    </span>
+                                    {% endif %}
                                 </div>
                                 <div class="trending-item-down-content">
                                     <span class="trending-item-category">{{ item.category_name }}</span>
@@ -202,41 +214,14 @@
                         </div>
                     </div>
                     <div class="categories-footer">
+                        {% for item in top_categories %}
                         <div class="categories-footer-item">
-                            <h4>Action</h4>
+                            <h4>{{ item.category_name }}</h4>
                             <div class="categories-footer-thumb">
-                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-01.jpg' %}"
-                                        alt=""></a>
+                                <a href="{% url 'product_details' %}"><img src="{{ item.image.url }}" alt=""></a>
                             </div>
                         </div>
-                        <div class="categories-footer-item">
-                            <h4>Action</h4>
-                            <div class="categories-footer-thumb">
-                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-05.jpg' %}"
-                                        alt=""></a>
-                            </div>
-                        </div>
-                        <div class="categories-footer-item">
-                            <h4>Action</h4>
-                            <div class="categories-footer-thumb">
-                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-03.jpg' %}"
-                                        alt=""></a>
-                            </div>
-                        </div>
-                        <div class="categories-footer-item">
-                            <h4>Action</h4>
-                            <div class="categories-footer-thumb">
-                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-04.jpg' %}"
-                                        alt=""></a>
-                            </div>
-                        </div>
-                        <div class="categories-footer-item">
-                            <h4>Action</h4>
-                            <div class="categories-footer-thumb">
-                                <a href="{% url 'product_details' %}"><img src="{% static 'img/categories-05.jpg' %}"
-                                        alt=""></a>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
