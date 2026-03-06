@@ -1,0 +1,54 @@
+:root {
+    --primary-color: #f8b600;
+}
+
+.hero-section-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.hero-section-title {
+    margin-top: 70px;
+    padding: 90px 0px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+}
+
+.hero-section-title h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+}
+
+.hero-section-title i {
+    margin: 0px 10px;
+    font-weight: 600;
+    color: white;
+}
+
+.about-info-section-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.about-info-section-left {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.about-info-section-left img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
