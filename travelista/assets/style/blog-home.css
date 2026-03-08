@@ -1,0 +1,212 @@
+:root {
+    --primary-color: #f8b600;
+}
+
+.hero-section {
+    background: url(../img/blog-home-img/blog-home-banner.jpg) bottom;
+    background-size: cover;
+    padding: 130px 0px;
+}
+
+.header .overlay-bg {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-section-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    height: 400px;
+}
+
+.hero-section .container {
+    height: 400px;
+}
+
+.hero-section-main-blog-head {
+    margin-top: 70px;
+    padding: 90px 0px;
+    text-align: center;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+}
+
+.hero-section-main-blog-head h1 {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2em;
+}
+
+.hero-section-main-blog-head p {
+    margin: 20px 0px;
+    color: white;
+}
+
+.hero-section-main-blog-head .primary-btn {
+    border-radius: 0px;
+    background: #fff;
+    color: #222;
+    font-weight: 600;
+    border: 1px solid transparent;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    line-height: 42px;
+    padding: 10px 30px 10px 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.hero-section-main-blog-head .primary-btn:hover {
+    background: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+.top-category-widget-section {
+    background-color: #f9f9ff;
+    padding: 90px 0 90px 0;
+}
+
+.top-category-widget-section-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.top-category-widget-section-card {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 29%;
+}
+
+.single-cat-widget {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.single-cat-widget .content {
+    position: relative;
+}
+
+.single-cat-widget .overlay-bg {
+    background: rgba(0, 0, 0, 0.85);
+    margin: 7%;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.single-cat-widget:hover .overlay-bg {
+    background: var(--primary-color);
+    margin: 7%;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.single-cat-widget .content-details {
+    top: 32%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    bottom: 0px;
+    position: absolute;
+}
+
+.single-cat-widget .content-details h4 {
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.single-cat-widget .content-details span {
+    display: inline-block;
+    background: #fff;
+    width: 60%;
+    height: 1%;
+}
+
+.post-content-section {
+    background-color: #f9f9ff;
+}
+
+.post-content-section-main {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.posts-list {
+    max-width: 66.66667%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.single-post {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 50px;
+}
+
+.single-post .meta-details {
+    text-align: right;
+    margin-top: 35px;
+    max-width: 25%;
+}
+
+.single-post .tags {
+    margin-bottom: 30px;
+}
+
+.user-details {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.single-post .meta-details .tags li {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.single-post .meta-details .tags a {
+    color: #222;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.single-post.meta-details .tags li a:hover {
+    color: var(--primary-color);
+}
