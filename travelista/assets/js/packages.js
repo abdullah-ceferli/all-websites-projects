@@ -32,17 +32,14 @@ function navBarMovement() {
     })
 }
 
-function testimonialCarusel() {
+function hotDealCarusel() {
     const slider = document.getElementById('slider')
-    const dotContainer = document.getElementById('dotContainer')
-    const dots = dotContainer.querySelectorAll('.testimonial-nav-dot')
-    const cards = slider.querySelectorAll('.testimonial-card')
-    let autoSlideInterval
-
-    const totalItems = dots.length; 
+    const dots = document.querySelectorAll('.hot-deal-section-carusel-dot')
+    const cards = document.querySelectorAll('.hot-deal-section-carusel-card')
+    let autoSlideInterval;
 
     function goToSlide(index) {
-        const cardWidth = cards[0].offsetWidth + 20
+        const cardWidth = slider.offsetWidth + 20
         slider.scrollTo({
             left: cardWidth * index,
             behavior: 'smooth'
@@ -51,16 +48,12 @@ function testimonialCarusel() {
     }
 
     dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goToSlide(index)
-        })
+        dot.addEventListener('click', () => goToSlide(index))
     })
 
     slider.addEventListener('scroll', () => {
-        const cardWidth = cards[0].offsetWidth + 20
-        const scrollPos = slider.scrollLeft
-        
-        const activeIndex = Math.round(scrollPos / cardWidth) % totalItems
+        const cardWidth = slider.offsetWidth + 20
+        const activeIndex = Math.round(slider.scrollLeft / cardWidth)
 
         dots.forEach((dot, i) => {
             dot.classList.toggle('active', i === activeIndex)
@@ -69,25 +62,17 @@ function testimonialCarusel() {
 
     function startAutoSlide() {
         autoSlideInterval = setInterval(() => {
-            const cardWidth = cards[0].offsetWidth + 20
-            let currentIndex = Math.round(slider.scrollLeft / cardWidth)
-            
-            let nextIndex = (currentIndex + 1) % totalItems
-
-            if (currentIndex >= totalItems) {
-                slider.scrollTo({ left: 0, behavior: 'auto' })
-                nextIndex = 1
-            }
-
+            let currentIndex = Math.round(slider.scrollLeft / (slider.offsetWidth + 20))
+            let nextIndex = (currentIndex + 1) % dots.length
             goToSlide(nextIndex)
-        }, 10000)
+        }, 8000)
     }
 
     function resetAutoSlide() {
         clearInterval(autoSlideInterval)
         startAutoSlide()
     }
-    
+
     startAutoSlide()
 }
 
@@ -107,6 +92,6 @@ navBarLinksChilds()
 
 navBarMovement()
 
-testimonialCarusel()
+document.addEventListener('DOMContentLoaded', hotDealCarusel())
 
 smoothUp()

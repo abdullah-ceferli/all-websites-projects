@@ -162,6 +162,18 @@ function recentBlogCarusel() {
 
 }
 
+function smoothUp() {
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault()
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            })
+        })
+    })
+}
+
 
 navBarLinksChilds()
 
@@ -172,3 +184,5 @@ navBarMovement()
 testimonialCarusel()
 
 recentBlogCarusel()
+
+smoothUp()

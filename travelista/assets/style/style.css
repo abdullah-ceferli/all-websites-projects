@@ -270,7 +270,7 @@
 
 .price-area-section-card-price h4 {
     text-align: center;
-    border-bottom: 1px solid #f8b600;
+    border-bottom: 1px solid var(--primary-color);
     padding-bottom: 20px;
     color: black;
 }
@@ -296,8 +296,8 @@
 }
 
 .price-area-section-card-price-list li a:hover {
-    border-color: #f8b600;
-    background: #f8b600;
+    border-color: var(--primary-color);
+    background: var(--primary-color);
     color: #fff;
 }
 
@@ -353,13 +353,7 @@
     background-color: #f9f9ff;
 }
 
-
-
-
-
-
 .testimonial-area-section-carousel {
-
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
@@ -540,7 +534,7 @@
     transform: scale(1.05);
 }
 
-.recent-blog-item .thumb{
+.recent-blog-item .thumb {
     overflow: hidden;
 }
 
@@ -558,7 +552,7 @@
     margin-right: 5px;
 }
 
-.recent-blog-item .tags a:hover{
+.recent-blog-item .tags a:hover {
     background-color: var(--primary-color);
     color: white;
 }
@@ -576,7 +570,7 @@
     text-align: start;
 }
 
-.recent-blog-item .title:hover{
+.recent-blog-item .title:hover {
     color: var(--primary-color);
 }
 
@@ -611,30 +605,6 @@
     background: var(--primary-color);
     width: 25px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media (max-width: 991px) {
     .single-recent-blog-post {
