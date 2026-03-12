@@ -54,3 +54,10 @@ class UserMessage(models.Model):
 
     def __str__(self):
         return f"Name: {self.name}, Email: {self.email}"
+    
+
+class TrashBin(models.Model):
+    class Meta:
+        managed = False 
+        verbose_name = "Trash Bin"
+        verbose_name_plural = "Trash Bin"
