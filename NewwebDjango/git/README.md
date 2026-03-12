@@ -10,3 +10,22 @@ You can run yourself for try
 # py .\django_project\manage.py runserver 0.0.0.0:8001
 # cloudflared tunnel --url http://localhost:8001
 
+
+
+
+# powershell commands for this django project
+# 1. media img cleaner
+$\color{green}{\text{python .\django_project\manage.py cleanup_media}}$
+
+$\color{red}{\text{creats new bin/project_img
+and put not using img from media which not using in dataBase}}$
+
+# 2. bin img cleaner 
+$\color{green}{\text{python .\django_project\manage.py cleanup_bin}}$
+
+$\color{red}{\text{delets bin/project_img/img }}$
+
+# or can use second variant
+$\color{green}{\text{python .\django_project\manage.py cleanup_bin --force}}$
+
+$\color{red}{\text{do some thing but not seying to u "Are you sure"}}$
