@@ -96,39 +96,48 @@
                                 </div>
                                 <div class="contact-page-right-footer">
                                     <div class="contact-form">
+                                        {% if error %}
+                                        <div
+                                            style="color: white; background: #d9534f; padding: 15px; margin-bottom: 20px; border-radius: 5px; text-align: center;">
+                                            <strong>{{ error }}</strong>
+                                        </div>
+                                        {% endif %}
+
                                         <form method="POST">
                                             {% csrf_token %}
                                             <div class="contact-form-input">
                                                 <div>
                                                     <fieldset>
                                                         <input type="text" name="name" id="name"
-                                                            placeholder="Your Name..." autocomplete="on" required="">
+                                                            value="{{ name|default:'' }}" placeholder="Your Name..."
+                                                            required="">
                                                     </fieldset>
                                                 </div>
                                                 <div>
                                                     <fieldset>
                                                         <input type="text" name="surname" id="surname"
-                                                            placeholder="Your Surname..." autocomplete="on" required="">
+                                                            value="{{ surname|default:'' }}"
+                                                            placeholder="Your Surname..." required="">
                                                     </fieldset>
                                                 </div>
                                                 <div>
                                                     <fieldset>
                                                         <input type="email" name="email" id="email"
-                                                            pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..."
+                                                            value="{{ email|default:'' }}" placeholder="Your E-mail..."
                                                             required="">
                                                     </fieldset>
                                                 </div>
                                                 <div>
                                                     <fieldset>
                                                         <input type="text" name="subject" id="subject"
-                                                            placeholder="Subject..." autocomplete="on">
+                                                            value="{{ subject|default:'' }}" placeholder="Subject...">
                                                     </fieldset>
                                                 </div>
                                             </div>
                                             <div class="contact-form-textarea">
                                                 <fieldset>
                                                     <textarea name="message" id="message"
-                                                        placeholder="Your Message"></textarea>
+                                                        placeholder="Your Message">{{ message|default:'' }}</textarea>
                                                 </fieldset>
                                             </div>
                                             <div>

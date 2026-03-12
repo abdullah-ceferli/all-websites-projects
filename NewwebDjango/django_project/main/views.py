@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from main.models import *
-from django.shortcuts import render
+from main.utils import is_message_appropriate
+from django.contrib import messages
 # Create your views here.
 
 
@@ -18,6 +19,11 @@ def product_details(request):
     return render(request, 'pages/product-details.html')
 
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .models import UserMessage, SignUp
+from .utils import is_message_appropriate
+
 def contact_us(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -26,21 +32,40 @@ def contact_us(request):
         subject = request.POST.get("subject")
         message = request.POST.get("message")
 
+        # 1. Registration Check
         if not SignUp.objects.filter(email=email).exists():
-            return render(request, "pages/login.html", {"error": "That Email is not registered! Please sign up first."})
+            return render(request, "pages/login.html", {"error": "Email not registered!"})
 
-        user_msg = UserMessage(
-            name=name,
-            surname=surname,
-            email=email,
-            subject=subject,
-            message=message,
+        # 2. Strict AI + List Check (checks both subject and message)
+        full_content = f"{subject} {message}"
+        if not is_message_appropriate(full_content):
+            return render(request, 'pages/contact-us.html', {
+                "error": "Message blocked! Please do not use inappropriate language.",
+                "name": name, 
+                "surname": surname, 
+                "email": email, 
+                "subject": subject, 
+                "message": message
+            })
+
+        # 3. Save to Database
+        UserMessage.objects.create(
+            name=name, 
+            surname=surname, 
+            email=email, 
+            subject=subject, 
+            message=message
         )
-        user_msg.save()
 
-        return render(request, 'pages/index.html')
+        # 4. Add success message for the next page
+        messages.success(request, "Thank you! Your message has been sent.")
 
+        # 5. REDIRECT to home (This stops the 'Confirm Resubmission' popup)
+        return redirect('home') 
+
+    # Handle the normal page load
     return render(request, 'pages/contact-us.html')
+
 
 
 def Home(request):
@@ -96,3 +121,5 @@ def auth_page(request):
                 return render(request, "pages/login.html", {"error": "Account not having"})
 
     return render(request, "pages/login.html")
+
+
