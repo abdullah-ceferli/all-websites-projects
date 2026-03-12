@@ -18,12 +18,6 @@ def shop(request):
 def product_details(request):
     return render(request, 'pages/product-details.html')
 
-
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import UserMessage, SignUp
-from .utils import is_message_appropriate
-
 def contact_us(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -32,11 +26,9 @@ def contact_us(request):
         subject = request.POST.get("subject")
         message = request.POST.get("message")
 
-        # 1. Registration Check
         if not SignUp.objects.filter(email=email).exists():
             return render(request, "pages/login.html", {"error": "Email not registered!"})
 
-        # 2. Strict AI + List Check (checks both subject and message)
         full_content = f"{subject} {message}"
         if not is_message_appropriate(full_content):
             return render(request, 'pages/contact-us.html', {
@@ -48,7 +40,6 @@ def contact_us(request):
                 "message": message
             })
 
-        # 3. Save to Database
         UserMessage.objects.create(
             name=name, 
             surname=surname, 
@@ -57,13 +48,10 @@ def contact_us(request):
             message=message
         )
 
-        # 4. Add success message for the next page
         messages.success(request, "Thank you! Your message has been sent.")
 
-        # 5. REDIRECT to home (This stops the 'Confirm Resubmission' popup)
         return redirect('home') 
 
-    # Handle the normal page load
     return render(request, 'pages/contact-us.html')
 
 

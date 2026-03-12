@@ -1,13 +1,10 @@
 import os
 import google.generativeai as genai
 from django.conf import settings
-from google.generativeai.types import HarmCategory, HarmBlockThreshold
 from dotenv import load_dotenv
 
-# 1. This looks for the .env file in your project root
 load_dotenv()
 
-# 2. Setup Gemini using the variable from .env
 API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=API_KEY)
 
@@ -21,14 +18,12 @@ def load_bad_words():
         print("Warning: bad-words.txt not found in project root!")
         return set()
 
-# Load the list into memory
 BAD_WORDS_SET = load_bad_words()
 
 def is_message_appropriate(text):
     if not text or not text.strip():
         return False
     
-    # LAYER 1: Word Check
     lowercase_text = text.lower()
     clean_text = "".join(char if char.isalnum() or char.isspace() else " " for char in lowercase_text)
     words_in_message = clean_text.split()
@@ -38,7 +33,6 @@ def is_message_appropriate(text):
             print(f"DEBUG: Blocked by List check ('{word}')")
             return False
 
-    # LAYER 2: AI Guard
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
         
