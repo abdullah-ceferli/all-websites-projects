@@ -15,17 +15,17 @@ You can run yourself for try
 
 # powershell commands for this django project
 # 1. media img cleaner
-$\color{green}{\text{python .\django_project\manage.py cleanup_media}}$
+<font color="green">python .\django_project\manage.py cleanup_media</font>
 
-$\color{red}{\text{creats new bin/project_img
-and put not using img from media which not using in dataBase}}$
+<font color="red">creats new bin/project_img <br>
+and put not using img from media which not using in dataBase</font>
 
 # 2. bin img cleaner 
-$\color{green}{\text{python .\django_project\manage.py cleanup_bin}}$
+<font color="green">python .\django_project\manage.py cleanup_bin</font>
 
-$\color{red}{\text{delets bin/project_img/img }}$
+<font color="red">delets bin/project_img/img </font>
 
 # or can use second variant
-$\color{green}{\text{python .\django_project\manage.py cleanup_bin --force}}$
+<font color="green">python .\django_project\manage.py cleanup_bin --force</font>
 
-$\color{red}{\text{do some thing but not seying to u "Are you sure"}}$
+<font color="red">do some thing but not seying to u "Are you sure"</font>
