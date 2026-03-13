@@ -1,0 +1,107 @@
+:root{
+    --primary-color: #ee626b;
+    --bg-color: #008af8;
+    --hover-color: #0071f8;
+}
+p{
+    font-size: 14px;
+    line-height: 28px;
+    color: #4a4a4a;
+}
+.contact-page-left{
+    margin-top: 5%;
+}
+.right-nav-bar ul li:nth-child(4) a{
+    background-color: rgba(255, 255, 255, 0.10);
+}
+.contact-page-left-txt{
+    background-color: #f7f7f7;
+    border-radius: 25px;
+    padding: 60px;
+    max-width: 636px;
+}
+.contact-page-left-txt p{
+    margin-bottom: 50px;
+}
+.contact-page-left-txt ul li{
+    display: block;
+    font-size: 16px;
+    color: #aaaaaa;
+    font-size: 300;
+    margin-bottom: 30px;
+}
+.contact-page-left-txt ul li span{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 5px;
+}
+.contact-page-map{
+    margin-bottom: 60px;
+}
+.contact-form-input div fieldset input{
+    width: 100%;
+    height: 50px;
+    border-radius: 25px;
+    padding: 0px 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #e7e7e7;
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+.contact-form div fieldset textarea{
+    width: 100%;
+    height: 130px;
+    border-radius: 25px;
+    padding: 20px 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #e7e7e7;
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+}
+.contact-form-textarea,.contact-page-right{
+    max-width: 610px;
+    width: 100%;
+}
+.contact-form-input div{
+    max-width: 290px;
+    width: 100%;
+}
+.contact-form-input{
+    display: flex;
+    gap: 4.5%;
+    flex-wrap: wrap;
+}
+.contact-form div fieldset button{
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 25px;
+    transition: all .3s;
+    cursor: pointer;
+}
+.contact-form div fieldset button:hover{
+    background-color: var(--hover-color);
+}
+.contact-form div fieldset{
+    border: none;
+}
+.main-contact-page .container .row{
+    display: flex;
+    gap: 5%;
+}
+.contact-form{
+    display: flex;
+    gap: 5%;
+    flex-wrap: wrap;
+}
