@@ -2,13 +2,14 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "DJANGO_SECRET_KEY"
+env_path = BASE_DIR.parent / 'git' / '.env'
 
-# DEBUG is False, so WhiteNoise is required to serve files
+load_dotenv(env_path)
+
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-fallback")
+
 DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
@@ -25,7 +26,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # WhiteNoise MUST be right below SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,11 +55,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://*.trycloudflare.com",
-    "https://your-custom-domain.com",
-    "http://127.0.0.1",
-]
+CSRF_TRUSTED_ORIGINS = ["https://*.trycloudflare.com", "http://127.0.0.1"]
 
 DATABASES = {
     'default': {
@@ -68,31 +64,10 @@ DATABASES = {
     }
 }
 
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-
-# --- STATIC & MEDIA CONFIGURATION ---
-
+# --- STATIC & MEDIA ---
 STATIC_URL = '/static/'
-
-# This is where your custom assets live (source)
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-# This is where collectstatic will put everything (output)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Use WhiteNoise to serve compressed/cached static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
@@ -105,3 +80,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
