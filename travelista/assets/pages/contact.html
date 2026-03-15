@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel</title>
     <link rel="stylesheet" href="../style/own-bootstrap.css">
-    <link rel="stylesheet" href="../style/insurance.css">
+    <link rel="stylesheet" href="../style/contact.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 </head>
 
 <body>
     <div class="wrapper">
-        <header class="header banner-area">
+        <header class="header banner-area">`
             <nav class="nav-bar" id="nav-bar">
                 <div class="nav-bar-top">
                     <div class="container">
@@ -46,14 +47,14 @@
                                 <li><a href="./about.html">About</a></li>
                                 <li><a href="./packages.html">Packages</a></li>
                                 <li><a href="./hotels.html">Hotels</a></li>
-                                <li><a href="./insurance.html">Insurance</a></li>
-                                <li class="menu-has-children"><a href="" class="sf-with-ul">Blog</a>
+                                <li><a href="./insurance.html">Insurence</a></li>
+                                <li class="menu-has-children"><a href="#" class="sf-with-ul">Blog</a>
                                     <ul>
                                         <li><a href="./blog-home.html">Blog Home</a></li>
                                         <li><a href="./blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li class="menu-has-children"><a href="" class="sf-with-ul">Pages</a>
+                                <li class="menu-has-children"><a href="#" class="sf-with-ul">Pages</a>
                                     <ul>
                                         <li><a href="./elements.html">Elements</a></li>
                                         <li class="menu-has-children"><a href="" class="sf-with-ul">Level 2 </a>
@@ -76,10 +77,10 @@
                     <div class="hero-section-main">
                         <div class="hero-section-title">
                             <h1>
-                                Insurance
+                                Contact Us
                             </h1>
                             <p class="text-white link-nav"><a href="../../index.html">Home </a> <i
-                                    class="fa-solid fa-arrow-right"></i> <a href="./travel.html"> Insurance</a></p>
+                                    class="fa-solid fa-arrow-right"></i> <a href="./contact.html"> Contact Us</a></p>
                         </div>
                     </div>
                 </div>
@@ -87,69 +88,71 @@
             </div>
         </header>
         <main class="main">
-            <!-- Start Insurence One Section -->
-            <section class="insurence-one-section section-gap">
+            <!-- Start Contact Page Section -->
+            <div class="contact-page-section section-gap">
                 <div class="container">
-                    <div class="insurence-one-section-main">
-                        <div class="insurence-one-section-left">
-                            <img class="img-fluid img-one" src="../img/insurance-img/i1.jpg" alt="">
+                    <div class="row">
+                        <div class="map-wrap">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12469.776493332698!2d-80.14036379941481!3d25.907788681148624!2m3!1f357.26927939317244!2f20.870722720054623!3f0!3m2!1i1024!2i768!4f35!3m3!1m2!1s0x88d9add4b4ac788f%3A0xe77469d09480fcdb!2sSunny%20Isles%20Beach!5e1!3m2!1sen!2sth!4v1642869952544!5m2!1sen!2sth"
+                                width="100%" height="325px" frameborder="0" style="border:0; border-radius: 23px;"
+                                allowfullscreen=""></iframe>
                         </div>
-                        <div class="insurence-one-section-right">
-                            <h6>Need to know</h6>
-                            <h1>Insurance for journey</h1>
-                            <p>
-                                Here, I focus on a range of items and features that we use in life without giving them a
-                                second thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis
-                                nostrud exercitation ullamco.
-                            </p>
-                            <div class="list-wrap">
-                                <ul>
-                                    <li>Strategic approach towards redesigning brand.</li>
-                                    <li>logo design strategy ensures a perfectly crafted
-                                        logo for your business.</li>
-                                    <li>Branding that stands out in the crowd.</li>
-                                    <li>Modern and evergreen logo for your business.</li>
-                                </ul>
+                        <div class="address-wrap">
+                            <div class="single-contact-address">
+                                <div class="icon">
+                                    <span class="lnr lnr-home"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>Binghamton, New York</h5>
+                                    <p>
+                                        4343 Hinkle Deegan Lake Road
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="single-contact-address">
+                                <div class="icon">
+                                    <span class="lnr lnr-phone-handset"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>00 (958) 9865 562</h5>
+                                    <p>Mon to Fri 9am to 6 pm</p>
+                                </div>
+                            </div>
+                            <div class="single-contact-address">
+                                <div class="icon">
+                                    <span class="lnr lnr-envelope"></span>
+                                </div>
+                                <div class="contact-details">
+                                    <h5>support@colorlib.com</h5>
+                                    <p>Send us your query anytime!</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
-            <!-- End Insurence One Section -->
+                        <div class="input-wrap">
+							<form class="form-area" id="myForm" action="mail.php" method="post">
+								<div class="row">	
+									<div class="form-group">
+										<input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
+									
+										<input name="email" placeholder="Enter email address" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" class="common-input mb-20 form-control" required="" type="email">
 
-            <!-- Start Insurence Two Section -->
-            <section class="insurence-two-section">
-                <div class="container">
-                    <div class="insurence-two-section-main">
-                        <div class="insurence-two-section-left">
-                            <h6>Need to know</h6>
-                            <h1>Insurance for journey</h1>
-                            <p>
-                                Here, I focus on a range of items and features that we use in life without giving them a
-                                second thought. such as Coca Cola. Dolor sit amet, consectetur adipisicing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis
-                                nostrud exercitation ullamco.
-                            </p>
-                            <div class="list-wrap">
-                                <ul>
-                                    <li>Strategic approach towards redesigning brand.</li>
-                                    <li>logo design strategy ensures a perfectly crafted
-                                        logo for your business.</li>
-                                    <li>Branding that stands out in the crowd.</li>
-                                    <li>Modern and evergreen logo for your business.</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="insurence-two-section-right">
-                            <img class="img-fluid img-one" src="../img/insurance-img/i2.jpg" alt="">
-                        </div>
+										<input name="subject" placeholder="Enter subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter subject'" class="common-input mb-20 form-control" required="" type="text">
+									</div>
+									<div class="form-group">
+										<textarea class="common-textarea form-control" name="message" placeholder="Enter Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Messege'" required=""></textarea>				
+									</div>
+									<div class="btn-group">
+										<div class="alert-msg" style="text-align: left;"></div>
+										<button class="genric-btn primary" style="float: right;">Send Message</button>											
+									</div>
+								</div>
+							</form>	
+						</div>
                     </div>
                 </div>
-            </section>
-            <!-- End Insurence Two Section -->
+            </div>
+            <!-- End Contact Page Section -->
         </main>
         <footer class="footer section-gap">
             <div class="container">
@@ -240,7 +243,7 @@
             </div>
         </footer>
     </div>
-    <script src="../js/insurance.js"></script>
+    <script src="../js/contact.js"></script>
 </body>
 
 </html>
