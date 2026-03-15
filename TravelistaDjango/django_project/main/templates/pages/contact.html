@@ -101,27 +101,23 @@
                                 allowfullscreen=""></iframe>
                         </div>
                         <div class="address-wrap">
+                            {% if contact_info %}
                             <div class="single-contact-address">
                                 <div class="icon">
                                     <span class="lnr lnr-home"></span>
                                 </div>
-                                {% if data %}
-                                {% for info in data %}
                                 <div class="contact-details">
-                                    <h5>Binghamton, New York</h5>
-                                    <p>
-                                        {{ info.location }} </p>
+                                    <h5>{{ contact_info.location }}</h5>
+                                    <p>{{ contact_info.location2 }}</p>
                                 </div>
-                                {% endfor %}
-                                {% endif %}
                             </div>
                             <div class="single-contact-address">
                                 <div class="icon">
                                     <span class="lnr lnr-phone-handset"></span>
                                 </div>
                                 <div class="contact-details">
-                                    <h5>00 (958) 9865 562</h5>
-                                    <p>Mon to Fri 9am to 6 pm</p>
+                                    <h5>{{ contact_info.phone_number }}</h5>
+                                    <p>{{ contact_info.phone_description }}</p>
                                 </div>
                             </div>
                             <div class="single-contact-address">
@@ -129,10 +125,11 @@
                                     <span class="lnr lnr-envelope"></span>
                                 </div>
                                 <div class="contact-details">
-                                    <h5>support@colorlib.com</h5>
-                                    <p>Send us your query anytime!</p>
+                                    <h5>{{ contact_info.email }}</h5>
+                                    <p>{{ contact_info.email_description }}</p>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                         <div class="input-wrap">
                             <form class="form-area" method="POST">

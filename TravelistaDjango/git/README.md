@@ -29,7 +29,3 @@ You can run yourself for try
 + python .\django_project\manage.py cleanup_bin --force
 
 - do some thing but not seying to u "Are you sure"
-
-
-
-pip install google-generativeai==0.3.2

@@ -14,11 +14,7 @@ def blogSingle(request):
     return render(request, 'pages/blog-single.html')
 
 def contact(request):
-    contact_list = ContactInfo.objects.first() 
-    
-    data = {
-        "contact_info": contact_list
-    }
+    contact_info = ContactInfo.objects.first()
 
     if request.method == "POST":
         name = request.POST.get("name")
@@ -37,7 +33,6 @@ def contact(request):
                 "email": email,
                 "subject": subject,
                 "message": message,
-                "contact_info": contact_list,
             })
 
         UserMessage.objects.create(
@@ -51,8 +46,9 @@ def contact(request):
         messages.success(request, "Thank you! Your message has been sent.")
         return redirect('index')
 
-    return render(request, 'pages/contact.html', data)
-
+    return render(request, 'pages/contact.html', {
+        "contact_info": contact_info
+    })
 
 def elements(request):
     return render(request, 'pages/elements.html') 
@@ -61,6 +57,7 @@ def hotels(request):
     return render(request, 'pages/hotels.html')
 
 def index(request):
+    
     return render(request, 'pages/index.html')
 
 def insurance(request):
