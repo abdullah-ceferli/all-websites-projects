@@ -7,7 +7,7 @@ click==8.3.1
 colorama==0.4.6
 cryptography==46.0.5
 django-debug-toolbar==6.2.0
-Django>=6.0.2
+Django==5.2.0
 dnspython==2.8.0
 email-validator==2.3.0
 google-ai-generativelanguage==0.6.15
