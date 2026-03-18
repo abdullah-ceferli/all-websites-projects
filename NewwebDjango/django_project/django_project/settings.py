@@ -53,10 +53,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
+# settings.py
+
+# 1. Trust the specific Cloudflare tunnel URL
 CSRF_TRUSTED_ORIGINS = [
+    "https://bug-repair-include-stands.trycloudflare.com",
     "https://*.trycloudflare.com",
-    "http://127.0.0.1",
 ]
+
+# 2. Ensure Django knows it is behind a HTTPS proxy
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 DATABASES = {
     'default': {
@@ -92,8 +98,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-
-
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

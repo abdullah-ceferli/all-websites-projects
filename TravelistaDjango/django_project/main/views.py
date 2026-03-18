@@ -4,14 +4,18 @@ from main.utils import is_message_appropriate
 from django.contrib import messages
 # Create your views here.
 
+
 def about(request):
     return render(request, 'pages/about.html')
+
 
 def blogHome(request):
     return render(request, 'pages/blog-home.html')
 
+
 def blogSingle(request):
     return render(request, 'pages/blog-single.html')
+
 
 def contact(request):
     contact_info = ContactInfo.objects.first()
@@ -24,7 +28,7 @@ def contact(request):
         message = request.POST.get("message")
 
         full_content = f"{subject} {message}"
-        
+
         if not is_message_appropriate(full_content):
             return render(request, 'pages/contact.html', {
                 "error": "Message blocked! Please do not use inappropriate language.",
@@ -50,18 +54,23 @@ def contact(request):
         "contact_info": contact_info
     })
 
+
 def elements(request):
-    return render(request, 'pages/elements.html') 
+    return render(request, 'pages/elements.html')
+
 
 def hotels(request):
     return render(request, 'pages/hotels.html')
 
+
 def index(request):
-    
+
     return render(request, 'pages/index.html')
+
 
 def insurance(request):
     return render(request, 'pages/insurance.html')
+
 
 def packages(request):
     return render(request, 'pages/packages.html')

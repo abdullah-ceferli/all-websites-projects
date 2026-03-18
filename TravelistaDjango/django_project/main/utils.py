@@ -67,7 +67,6 @@ def is_message_appropriate(text):
         print(f"AI ERROR: {e}")
         return True
 
-
 # def get_cipher():
 #     key = hashlib.sha256(settings.SECRET_KEY.encode()).digest()
 #     return Fernet(base64.urlsafe_b64encode(key))
